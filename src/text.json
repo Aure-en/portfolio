@@ -1,0 +1,89 @@
+{
+  "en": {
+    "title": "Hello, I am Aurélie.",
+    "text": [
+              "Self-taught front-end developer, I started studying web development with the help of The Odin Project. Using the vast list of resources they offer, I was able to obtain new learning skills as I studied web fundamentals and learnt to enjoy building responsive websites from scratch to bring ideas to life in a browser. Recently, I have been mostly building web apps with React and Firebase.",
+
+              "Invested in the life-long learning mentality, I currently strive to join an innovative team where I could keep on growing both personally and profesionally on a long-term period."
+            ],
+    "interests": [
+      "Solving Mysteries. Be it in books or games, I love discovering and solving puzzles.",
+      "Playing and listening to soft, peaceful music on the piano.",
+      "Taking long walks in place surrounded by nature. A breath of fresh air is always welcome between coding sessions."
+    ],
+    "projects": [
+      {
+        "title": "Room",
+        "description": [
+                          "Room is a e-commerce website that provides a full shopping experience for the user, as they are able to save, inspect and buy products they like. Customers can easily find the furniture they are looking for thanks to a sorting and filtering system that allows shoppers to look for products with specific colors, dimensions, or material.",
+              
+                          "Even if they lack inspiration and are simply browsing, users can surely find their happiness by browsing through recommendations or featured designs."
+                        ],
+        "technologies": [
+          "React",
+          "React Router",
+          "Styled Components",
+          "Firebase",
+          "Responsive"
+        ]
+      },
+      {
+        "title": "Breadit",
+        "description": [
+                        "Breadit is a social media that aims at replicating Reddit as closely as possible. It offers many different features that allow users to share many types of content (text, images, links). Users can interact with others' content by upvoting or downvoting it to increase or decrease its visibility, or by commenting.",
+                        "Moreover, users can create and invite each other to join communities, mention each other in discussions or simply keep conversations private through direct messages."
+                      ],
+        "technologies": [
+          "React",
+          "React Router",
+          "Styled Components",
+          "Firebase",
+          "Responsive"
+        ]
+      }
+    ]
+  },
+  "fr": {
+    "title": "Aurélie Nguyen",
+    "text": [
+      "Développeuse front-end autodidacte, j'ai commencé à étudier le web développement sur The Odin Project. En utilisant les vastes ressources proposées par ce site, j'ai pu acquérir de nouvelles compétences et découvrir à quel point j'appréciais créer des sites à partir de rien, de donner vie à de nouvelles idées dans le navigateur. Récemment, j'ai construit des applications web avec React et Firebase.",
+
+      "Aujourd'hui, je cherche à rejoindre une équipe innovative où je pourrais continuer à apprendre et à grandir tant sur le plan personnel que sur le plan professionnel."
+    ],
+    "interests": [
+      "Résoudre des mystères. Que ce soit dans des jeux ou à travers des livres, j'adore découvrir et résoudre des puzzles.",
+      "Ecouter et jouer des musiques douces au piano",
+      "Me promener dans de vastes espaces naturels. Une bouffée d'air frais est toujours la bienvenue entre deux sessions de code !"
+    ],
+    "projects": [
+      {
+        "title": "Room",
+        "description": [
+          "Room est un site de e-commerce proposant des meubles et décorations. Ce site fournit une expérience commerciale complète, puisque l'utilisateur peut examiner les produits, les acheter ou les sauvegarder dans une liste de favoris. Les clients peuvent facilement trouver le produit qu'ils recherchent en filtrant les meubles par couleur, dimension ou matériau.",
+          "En cas de manque d'inspiration, les utilisateurs pourront tout de même trouver leur bonheur en parcourant des pièces prédécorées."
+        ],
+        "technologies": [
+          "React",
+          "React Router",
+          "Styled Components",
+          "Firebase",
+          "Responsive"
+        ]
+      },
+      {
+        "title": "Breadit",
+        "description": [
+          "Breadit est un réseau social que j'ai construit avec l'objectif de reproduire Reddit le plus précisément possible. Ce site propose différentes fonctionnalités qui permettent aux utilisateurs de partager du contenu divers (texte, images, liens...). Les utilisateurs peuvent interagir le-dit contenu en votant afin d'accroître ou de diminuer sa visibilité, ou en écrivant un commentaire.",
+          "De plus, les utilisateurs peuvent créer des communautés et y inviter d'autres personnes, se mentionner entre eux dans des discussions publiques, ou plus discrètement s'envoyer des messages privés."
+        ],
+        "technologies": [
+          "React",
+          "React Router",
+          "Styled Components",
+          "Firebase",
+          "Responsive"
+        ]
+      }
+    ]
+  }
+}
