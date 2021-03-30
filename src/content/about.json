@@ -1,0 +1,37 @@
+{ 
+  "en": {
+    "title": "Hello, I am Aurélie.",
+    "text": [
+              "Self-taught front-end developer, I started studying web development with the help of The Odin Project. Using the vast list of resources they offer, I was able to obtain new learning skills as I studied web fundamentals and learnt to enjoy building responsive websites from scratch to bring ideas to life in a browser. Recently, I have been mostly building web apps with React and Firebase.",
+
+              "Invested in a life-long learning mentality, I currently strive to join an innovative team where I could keep on growing both personally and profesionally on a long-term period."
+            ],
+    "interests": {
+      "introduction": "When I am not staring at my IDE, you can find me...",
+      "list": [
+        "Solving Mysteries. Be it in books or games, I love discovering and solving puzzles.",
+        "Playing and listening to soft, peaceful music on the piano.",
+        "Taking long walks in place surrounded by nature. A breath of fresh air is always welcome between coding sessions."
+      ]
+    },
+    "link": "View Projects"
+  },
+
+  "fr": {
+    "title": "Aurélie Nguyen",
+    "text": [
+      "Développeuse front-end autodidacte, j'ai commencé à étudier le web développement sur The Odin Project. En utilisant les vastes ressources proposées par ce site, j'ai pu acquérir de nouvelles compétences et découvrir à quel point j'appréciais créer des sites à partir de rien, de donner vie à de nouvelles idées dans le navigateur. Récemment, j'ai construit des applications web avec React et Firebase.",
+
+      "Aujourd'hui, je cherche à rejoindre une équipe innovative où je pourrais continuer à apprendre et à grandir tant sur le plan personnel que sur le plan professionnel."
+    ],
+    "interests": {
+      "introduction": "Lorsque je ne suis pas en train de regarder mon IDE, vous pouvez me trouver en train de...",
+      "list": [
+        "Résoudre des mystères. Que ce soit dans des jeux ou à travers des livres, j'adore découvrir et résoudre des puzzles.",
+        "Ecouter et jouer des musiques douces au piano",
+        "Me promener dans de vastes espaces naturels. Une bouffée d'air frais est toujours la bienvenue entre deux sessions de code !"
+      ]
+    },
+    "button": "Portfolio"
+  }
+}
