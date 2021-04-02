@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useLanguage } from "../contexts/LanguageContext";
 import content from "../content/about.json";
+import { ReactComponent as IconDown } from "../assets/icons/chevron-down.svg";
 
 function About() {
   const { language } = useLanguage();
@@ -12,16 +13,18 @@ function About() {
         <Title>{content[language].title}</Title>
         <Text>
           {content[language].text.map((paragraph) => (
-            <p>{paragraph}</p>
+            <p key={paragraph}>{paragraph}</p>
           ))}
         </Text>
-        <div>{content[language].interests.introduction}</div>
-        <div>
+        <Interest>{content[language].interests.introduction}</Interest>
+        <ul>
           {content[language].interests.list.map((interest) => (
-            <div key={interest}>{interest}</div>
+            <li key={interest}>{interest}</li>
           ))}
-        </div>
-        <Link href="#projects">View Projects</Link>
+        </ul>
+        <Link href="#projects">
+          {content[language].link} <IconDown />
+        </Link>
       </Container>
     </Wrapper>
   );
@@ -29,12 +32,56 @@ function About() {
 
 export default About;
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  border: 1px solid blue;
+  width: 100vw;
+  min-height: 100vh;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
-const Container = styled.main``;
+const Container = styled.main`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid ${(props) => props.theme.border};
+  padding: 3rem 4rem;
+  width: 100vw;
+  max-width: 50rem;
+
+  @media all and (min-width: 1200px) {
+    position: relative;
+    left: -5vw;
+  }
+`;
 
 const Text = styled.div``;
 
-const Title = styled.h1``;
+const Title = styled.h1`
+  font-family: "Playfair Display", "Source Sans Pro", "Open Sans",
+    "Trebuchet MS", "Verdana", sans-serif;
+  font-weight: 300;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+`;
 
-const Link = styled.a``;
+const Interest = styled.h3`
+  font-family: "Playfair Display", "Source Sans Pro", "Open Sans",
+    "Trebuchet MS", "Verdana", sans-serif;
+  font-weight: 300;
+`;
+
+const Link = styled.a`
+  display: flex;
+  align-items: center;
+  border: 1px solid ${(props) => props.theme.border};
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  align-self: flex-end;
+  margin-top: 0.5rem;
+
+  & > svg {
+    margin-left: 0.5rem;
+  }
+`;

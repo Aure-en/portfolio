@@ -23,7 +23,12 @@
     ],
     "repository": "https://github.com/Aure-en/room",
     "view": "https://room-f191c.web.app/",
-    "visuals": []
+    "visuals": [
+      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Froom%2Froom1.png?alt=media&token=d44ade1d-70d0-4346-9b77-7f50680ecf1c",
+      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Froom%2Froom2.png?alt=media&token=f877be94-7f23-4d61-933c-761f7ae7ea53",
+      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Froom%2Froom3.png?alt=media&token=68b9047c-2923-4752-b769-2a241ba7fd91"
+    ],
+    "hasDarkMode": false
   },
 
   {
@@ -48,6 +53,18 @@
     ],
     "repository": "https://github.com/Aure-en/breadit",
     "view": "https://breadit.web.app/",
-    "visuals": []
+    "visuals": {
+      "light": [
+        "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fbreadit1L.png?alt=media&token=cfda9918-99b1-42bf-91f9-f3769760cc31",
+        "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fbreadit2L.png?alt=media&token=b27ccfac-9037-400d-b758-e7bbe004bc25",
+        "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fbreadit3L.png?alt=media&token=9782e622-574b-43fd-8d1f-e7f680aee884"
+      ],
+      "dark": [
+        "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fbreadit1D.png?alt=media&token=1a7c4e8e-0912-4b96-bb7e-b39184bfaf9d",
+        "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fbreadit2D.png?alt=media&token=e0e58330-d3fb-44b8-91ba-c3e8b6827ede",
+        "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fbreadit3D.png?alt=media&token=8fc18f90-53be-4408-aaa4-7d3077933b22"
+      ]
+    },
+    "hasDarkMode": true
   }
 ]

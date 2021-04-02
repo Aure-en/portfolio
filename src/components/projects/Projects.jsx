@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Project from "./Project";
-import projects from "../content/projects.json";
+import projects from "../../content/projects.json";
 
 function Projects() {
   return (
