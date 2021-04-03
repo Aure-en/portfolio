@@ -1,11 +1,22 @@
 import React from 'react'
+import styled from "styled-components";
+import PropTypes from "prop-types";
 
-function Scroll() {
+function Scroll({ current, max }) {
   return (
-    <div>
-      
-    </div>
-  )
+    <Container>
+      {current} <Line /> {max}
+    </Container>
+  );
 }
 
-export default Scroll
+export default Scroll;
+
+Scroll.propTypes = {
+  current: PropTypes.number.isRequired,
+  max: PropTypes.number.isRequired,
+};
+
+const Container = styled.div``;
+
+const Line = styled.span``;

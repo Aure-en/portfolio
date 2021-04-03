@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { useLanguage } from "../../contexts/LanguageContext";
+import Preview from "./Preview";
 
 function Project({ project }) {
   const { language } = useLanguage();
@@ -9,7 +10,7 @@ function Project({ project }) {
   return (
     <Wrapper id={`project-${project.id}`}>
       <Container>
-        <ImageContainer />
+        <Preview visuals={project.visuals} hasDarkMode={project.hasDarkMode} />
 
         <Content>
           <Header>
@@ -65,13 +66,6 @@ const Container = styled.article`
     max-width: 60rem;
     flex-direction: row;
   }
-`;
-
-const ImageContainer = styled.div`
-  position: relative;
-  height: 70vh;
-  width: 30rem;
-  border: 1px solid grey;
 `;
 
 const Content = styled.div`
@@ -161,6 +155,7 @@ Project.propTypes = {
         dark: PropTypes.arrayOf(PropTypes.string),
       }),
     ]),
+    hasDarkMode: PropTypes.bool.isRequired,
   }).isRequired,
 };
 

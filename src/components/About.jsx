@@ -33,7 +33,6 @@ function About() {
 export default About;
 
 const Wrapper = styled.div`
-  border: 1px solid blue;
   width: 100vw;
   min-height: 100vh;
   max-width: 100%;
@@ -45,7 +44,6 @@ const Wrapper = styled.div`
 const Container = styled.main`
   display: flex;
   flex-direction: column;
-  border: 1px solid ${(props) => props.theme.border};
   padding: 3rem 4rem;
   width: 100vw;
   max-width: 50rem;
