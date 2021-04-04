@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { useLanguage } from "../contexts/LanguageContext";
+import { useCursor } from "../contexts/CursorContext";
 import content from "../content/about.json";
 import { ReactComponent as IconDown } from "../assets/icons/chevron-down.svg";
 
 function About() {
   const { language } = useLanguage();
+  const { setState } = useCursor();
 
   return (
     <Wrapper id="about">
@@ -22,7 +24,11 @@ function About() {
             <li key={interest}>{interest}</li>
           ))}
         </ul>
-        <Link href="#projects">
+        <Link
+          href="#projects"
+          onMouseEnter={() => setState("hidden")}
+          onMouseLeave={() => setState("basic")}
+        >
           {content[language].link} <IconDown />
         </Link>
       </Container>

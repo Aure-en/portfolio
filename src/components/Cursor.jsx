@@ -1,9 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import cursor from "../assets/icons/cursor.svg";
 
-function Cursor({ isActive }) {
+// Icons
+import cursor from "../assets/icons/cursor.svg";
+import { ReactComponent as CaretDown } from "../assets/icons/caret-down.svg";
+import { ReactComponent as CaretUp } from "../assets/icons/caret-up.svg";
+
+function Cursor({ state }) {
   const cursorRef = useRef();
   const circleRef = useRef();
   let currentScroll =
@@ -47,8 +51,8 @@ function Cursor({ isActive }) {
 
   return (
     <>
-      <Circle isActive={isActive} ref={circleRef} />
-      <Icon isActive={isActive} ref={cursorRef} />
+      <Circle state={state} ref={circleRef} />
+      <Icon state={state} ref={cursorRef} alt="Cursor" />
     </>
   );
 }
@@ -56,28 +60,29 @@ function Cursor({ isActive }) {
 export default Cursor;
 
 Cursor.propTypes = {
-  isActive: PropTypes.bool,
+  state: PropTypes.string,
 };
 
 Cursor.defaultProps = {
-  isActive: false,
+  state: "basic",
 };
 
 const Circle = styled.span`
   position: absolute;
-  display: inline-block;
+  display: ${(props) => (props.state === "hidden" ? "none" : "inline-block")};
   border-radius: 50%;
-  width: 2rem;
-  height: 2rem;
+  width: ${(props) => (props.state === "preview" ? "3rem" : "2rem")};
+  height: ${(props) => (props.state === "preview" ? "3rem" : "2rem")};
   border: 1px solid grey;
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 999;
+  transition: height, width 0.1s ease-out;
 `;
 
 const Icon = styled.span`
   position: absolute;
-  display: ${(props) => (props.isActive ? "none" : "inline-block")};
+  display: ${(props) => (props.state === "hidden" ? "none" : "inline-block")};
   width: 1.5rem;
   height: 1.5rem;
   background: url(${cursor});

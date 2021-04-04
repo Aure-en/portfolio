@@ -2,10 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { useLanguage } from "../../contexts/LanguageContext";
+import { useCursor } from "../../contexts/CursorContext";
 import Preview from "./Preview";
 
 function Project({ project }) {
   const { language } = useLanguage();
+  const { setState } = useCursor();
 
   return (
     <Wrapper id={`project-${project.id}`}>
@@ -34,10 +36,18 @@ function Project({ project }) {
               ))}
             </StackList>
             <Links>
-              <Link href={project.view}>
+              <Link
+                href={project.view}
+                onMouseEnter={() => setState("hidden")}
+                onMouseLeave={() => setState("basic")}
+              >
                 {language === "en" ? "Preview" : "Visiter le site"}
               </Link>
-              <Link href={project.repository}>
+              <Link
+                href={project.repository}
+                onMouseEnter={() => setState("hidden")}
+                onMouseLeave={() => setState("basic")}
+              >
                 {language === "en" ? "View Code" : "Voir le code"}
               </Link>
             </Links>
@@ -133,7 +143,7 @@ const Links = styled.div`
 const Link = styled.a`
   text-transform: uppercase;
   align-self: flex-end;
-  margin-top: 0.5rem;
+  padding-top: 0.5rem;
   grid-column: 2;
 `;
 

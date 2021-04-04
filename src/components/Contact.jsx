@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useCursor } from "../contexts/CursorContext";
 import contact from "../content/contact.json";
 
 // Icons
@@ -7,17 +8,25 @@ import { ReactComponent as IconGithub } from "../assets/icons/github.svg";
 import { ReactComponent as IconMail } from "../assets/icons/mail.svg";
 
 function Contact() {
+  const { setState } = useCursor();
+
   return (
     <Wrapper id="contact">
       <Container>
         <Text>Contact</Text>
         <List>
-          <Social>
+          <Social
+            onMouseEnter={() => setState("hidden")}
+            onMouseLeave={() => setState("basic")}
+          >
             <a href={`mailto:${contact.mail}`}>
               <IconMail />
             </a>
           </Social>
-          <Social>
+          <Social
+            onMouseEnter={() => setState("hidden")}
+            onMouseLeave={() => setState("basic")}
+          >
             <a href={contact.github}>
               <IconGithub />
             </a>
@@ -68,5 +77,10 @@ const List = styled.ul`
 `;
 
 const Social = styled.li`
-  margin: 0 0.25rem;
+  padding: 0 0.25rem;
+  cursor: pointer;
+
+  & svg {
+    cursor: pointer;
+  }
 `;

@@ -1,13 +1,34 @@
 import React from "react";
 import styled from "styled-components";
+import { useCursor } from "../contexts/CursorContext";
 
 function Header() {
+  const { setState } = useCursor();
+
   return (
     <Wrapper>
       <Container>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <a
+          href="#about"
+          onMouseEnter={() => setState("hidden")}
+          onMouseLeave={() => setState("basic")}
+        >
+          About
+        </a>
+        <a
+          href="#projects"
+          onMouseEnter={() => setState("hidden")}
+          onMouseLeave={() => setState("basic")}
+        >
+          Projects
+        </a>
+        <a
+          href="#contact"
+          onMouseEnter={() => setState("hidden")}
+          onMouseLeave={() => setState("basic")}
+        >
+          Contact
+        </a>
       </Container>
     </Wrapper>
   );

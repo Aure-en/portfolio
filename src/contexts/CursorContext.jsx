@@ -1,4 +1,5 @@
 import React, { useContext, createContext, useState } from "react";
+import styled from "styled-components";
 import PropTypes from "prop-types";
 import Cursor from "../components/Cursor";
 
@@ -9,17 +10,18 @@ export function useCursor() {
 }
 
 export function CursorProvider({ children }) {
-  const [isActive, setIsActive] = useState(false);
+  const [state, setState] = useState("basic");
 
   const value = {
-    isActive,
-    setIsActive,
+    setState,
   };
 
   return (
     <CursorContext.Provider value={value}>
-      <Cursor />
-      {children}
+      <Container>
+        <Cursor state={state} />
+        {children}
+      </Container>
     </CursorContext.Provider>
   );
 }
@@ -31,3 +33,8 @@ CursorProvider.propTypes = {
 CursorProvider.defaultProps = {
   children: <div />,
 };
+
+const Container = styled.div`
+  position: relative;
+  overflow: hidden;
+`;

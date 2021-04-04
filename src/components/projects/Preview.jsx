@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import DragAndScroll from "../utils/DragAndScroll";
+import { useCursor } from "../../contexts/CursorContext";
 
 // Icons
 import { ReactComponent as IconLight } from "../../assets/icons/light.svg";
@@ -10,6 +11,7 @@ import { ReactComponent as IconDark } from "../../assets/icons/dark.svg";
 function Preview({ visuals, hasDarkMode }) {
   const [currentImage, setCurrentImage] = useState(0);
   const [theme, setTheme] = useState("light");
+  const { setState } = useCursor();
 
   const switchTheme = () => {
     if (theme === "light") {
@@ -29,7 +31,12 @@ function Preview({ visuals, hasDarkMode }) {
               hasDarkMode ? visuals[theme][currentImage] : visuals[currentImage]
             }
             alt="Project Preview"
-            onDragStart={(e) => e.preventDefault()}
+            onDragStart={(e) => {
+              e.preventDefault();
+              setState("scroll");
+            }}
+            onMouseEnter={() => setState("preview")}
+            onMouseLeave={() => setState("basic")}
           />
         </DragAndScroll>
       </div>
@@ -45,6 +52,8 @@ function Preview({ visuals, hasDarkMode }) {
                 type="button"
                 onClick={() => setCurrentImage(index)}
                 isSelected={currentImage === index}
+                onMouseEnter={() => setState("hidden")}
+                onMouseLeave={() => setState("basic")}
               />
             ))}
           </Buttons>
@@ -56,6 +65,8 @@ function Preview({ visuals, hasDarkMode }) {
               type="button"
               onClick={() => setCurrentImage(index)}
               isSelected={currentImage === index}
+              onMouseEnter={() => setState("hidden")}
+              onMouseLeave={() => setState("basic")}
             />
           ))}
         </Buttons>
@@ -127,6 +138,7 @@ const Button = styled.button`
   height: 0.65rem;
   padding: 0;
   transform: rotate(45deg);
+  cursor: pointer;
 `;
 
 const Switch = styled.button`
