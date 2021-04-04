@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import Cursor from "./components/Cursor";
+import { CursorProvider } from "./contexts/CursorContext";
 import Header from "./components/Header";
 import About from "./components/About";
 import Projects from "./components/projects/Projects";
@@ -14,14 +14,15 @@ function App() {
   return (
     <LanguageProvider>
       <ThemeProvider>
-        <Container>
-          <GlobalStyles />
-          <Cursor />
-          <Header />
-          <About />
-          <Projects />
-          <Contact />
-        </Container>
+        <CursorProvider>
+          <Container>
+            <GlobalStyles />
+            <Header />
+            <About />
+            <Projects />
+            <Contact />
+          </Container>
+        </CursorProvider>
       </ThemeProvider>
     </LanguageProvider>
   );
