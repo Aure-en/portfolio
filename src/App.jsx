@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import Cursor from "./components/Cursor";
 import Header from "./components/Header";
 import About from "./components/About";
 import Projects from "./components/projects/Projects";
@@ -15,6 +16,7 @@ function App() {
       <ThemeProvider>
         <Container>
           <GlobalStyles />
+          <Cursor />
           <Header />
           <About />
           <Projects />
