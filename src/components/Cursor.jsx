@@ -4,8 +4,6 @@ import styled from "styled-components";
 
 // Icons
 import cursor from "../assets/icons/cursor.svg";
-import { ReactComponent as CaretDown } from "../assets/icons/caret-down.svg";
-import { ReactComponent as CaretUp } from "../assets/icons/caret-up.svg";
 
 function Cursor({ state }) {
   const cursorRef = useRef();
@@ -67,17 +65,66 @@ Cursor.defaultProps = {
   state: "basic",
 };
 
+const caret = `
+  position: absolute;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+`;
+
 const Circle = styled.span`
   position: absolute;
   display: ${(props) => (props.state === "hidden" ? "none" : "inline-block")};
-  border-radius: 50%;
-  width: ${(props) => (props.state === "preview" ? "3rem" : "2rem")};
-  height: ${(props) => (props.state === "preview" ? "3rem" : "2rem")};
-  border: 1px solid grey;
+  width: ${(props) => {
+    switch (props.state) {
+      case "hidden":
+        return "0";
+      case "preview":
+        return "3rem";
+      case "scroll":
+        return "2.5rem";
+      case "basic":
+      default:
+        return "2rem";
+    }
+  }};
+  height: ${(props) => {
+    switch (props.state) {
+      case "hidden":
+        return "0";
+      case "preview":
+        return "3rem";
+      case "scroll":
+        return "2.5rem";
+      case "basic":
+      default:
+        return "2rem";
+    }
+  }};
   transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid grey;
   pointer-events: none;
   z-index: 999;
   transition: height, width 0.1s ease-out;
+
+  &:before {
+    ${caret};
+    ${(props) => props.state === "scroll" && 'content: ""'};
+    border-bottom: 4px solid ${(props) => props.theme.cursor};
+    border-top: 4px solid transparent;
+    top: -35%;
+  }
+
+  &:after {
+    ${caret}
+    ${(props) => props.state === "scroll" && 'content: ""'};
+    border-top: 4px solid ${(props) => props.theme.cursor};
+    border-bottom: 4px solid transparent;
+    bottom: -35%;
+  }
 `;
 
 const Icon = styled.span`
