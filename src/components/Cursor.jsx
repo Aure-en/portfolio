@@ -2,11 +2,7 @@ import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-// Icons
-import cursor from "../assets/icons/cursor.svg";
-
 function Cursor({ state }) {
-  const cursorRef = useRef();
   const circleRef = useRef();
   let currentScroll =
     document.documentElement.scrollTop || document.body.scrollTop;
@@ -18,15 +14,12 @@ function Cursor({ state }) {
   const onMouseMove = (e) => {
     mouseX = e.pageX;
     mouseY = e.pageY;
-    cursorRef.current.style.top = `${e.pageY}px`;
-    cursorRef.current.style.left = `${e.pageX}px`;
   };
 
   const onScroll = () => {
     mouseY +=
       (document.documentElement.scrollTop || document.body.scrollTop) -
       currentScroll;
-    cursorRef.current.style.top = `${mouseY}px`;
     currentScroll =
       document.documentElement.scrollTop || document.body.scrollTop;
   };
@@ -47,12 +40,7 @@ function Cursor({ state }) {
     };
   }, []);
 
-  return (
-    <>
-      <Circle state={state} ref={circleRef} />
-      <Icon state={state} ref={cursorRef} alt="Cursor" />
-    </>
-  );
+  return <Circle state={state} ref={circleRef} />;
 }
 
 export default Cursor;
@@ -125,15 +113,4 @@ const Circle = styled.span`
     border-bottom: 4px solid transparent;
     bottom: -35%;
   }
-`;
-
-const Icon = styled.span`
-  position: absolute;
-  display: ${(props) => (props.state === "hidden" ? "none" : "inline-block")};
-  width: 1.5rem;
-  height: 1.5rem;
-  background: url(${cursor});
-  background-repeat: no-repeat;
-  pointer-events: none;
-  z-index: 1000;
 `;

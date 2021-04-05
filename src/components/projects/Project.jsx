@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { useCursor } from "../../contexts/CursorContext";
-import Preview from "./Preview";
+import Preview from "./preview/Preview";
 
 function Project({ project }) {
   const { language } = useLanguage();

@@ -1,11 +1,12 @@
 import { createGlobalStyle } from "styled-components";
+import cursor from "../assets/icons/cursor.svg";
 
 const GlobalStyles = createGlobalStyle`
   *,
   *:before,
   *:after {
     box-sizing: border-box;
-    cursor: none;
+    cursor: url(${cursor}), auto;
   }
 
   body {
