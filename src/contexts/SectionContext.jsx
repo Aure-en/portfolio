@@ -24,17 +24,15 @@ export function SectionProvider({ sections, children }) {
   */
   const sectionRef = useRef(section);
   const move = (section) => {
+    document.querySelector(`#${sections[section]}`).scrollIntoView();
     sectionRef.current = section;
     localStorage.setItem("section", section);
     setSection(section);
-    console.log(document.querySelector(`#${sections[sectionRef.current]}`));
-    document
-      .querySelector(`#${sections[sectionRef.current]}`)
-      .scrollIntoView(false);
   };
   let delaying = false; // Prevents the user from scrolling many times at once.
 
   const onMouseWheel = (e) => {
+    e.preventDefault();
     if (delaying) return;
 
     if (e.deltaY > 0 && sectionRef.current !== sections.length - 1) {
@@ -46,11 +44,11 @@ export function SectionProvider({ sections, children }) {
     delaying = true;
     setTimeout(() => {
       delaying = false;
-    }, 1000);
+    }, 500);
   };
 
   useEffect(() => {
-    window.addEventListener("wheel", onMouseWheel);
+    window.addEventListener("wheel", onMouseWheel, { passive: false });
     return () => window.removeEventListener("wheel", onMouseWheel);
   }, []);
 
