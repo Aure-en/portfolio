@@ -19,6 +19,7 @@ const GlobalStyles = createGlobalStyle`
     background: ${({ theme }) => theme.bg_app};
     color: ${({ theme }) => theme.text_primary};
     font-weight: 300;
+    overflow: hidden;
   }
 
   p {

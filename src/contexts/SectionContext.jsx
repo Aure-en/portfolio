@@ -23,12 +23,23 @@ export function SectionProvider({ sections, children }) {
    We use ref
   */
   const sectionRef = useRef(section);
-  const move = (section) => {
-    document.querySelector(`#${sections[section]}`).scrollIntoView();
+
+  const updateSection = (section) => {
     sectionRef.current = section;
     localStorage.setItem("section", section);
     setSection(section);
   };
+
+  const link = (href) => {
+    const number = sections.findIndex((section) => section === href);
+    updateSection(number);
+  };
+
+  const move = (section) => {
+    document.querySelector(`#${sections[section]}`).scrollIntoView();
+    updateSection(section);
+  };
+
   let delaying = false; // Prevents the user from scrolling many times at once.
 
   const onMouseWheel = (e) => {
@@ -44,17 +55,33 @@ export function SectionProvider({ sections, children }) {
     delaying = true;
     setTimeout(() => {
       delaying = false;
-    }, 500);
+    }, 300);
+  };
+
+  const onKeyDown = (e) => {
+    if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
+    e.preventDefault();
+    if (delaying) return;
+
+    if (e.key === "ArrowDown") {
+      move(sectionRef.current + 1);
+    } else if (e.key === "ArrowUp") {
+      move(sectionRef.current - 1);
+    }
   };
 
   useEffect(() => {
     window.addEventListener("wheel", onMouseWheel, { passive: false });
-    return () => window.removeEventListener("wheel", onMouseWheel);
+    window.addEventListener("keydown", onKeyDown, { passive: false });
+    return () => {
+      window.removeEventListener("wheel", onMouseWheel);
+      window.removeEventListener("keydown", onKeyDown);
+    };
   }, []);
 
   const value = {
     section,
-    setSection,
+    link,
   };
 
   return (

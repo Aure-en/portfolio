@@ -2,12 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useCursor } from "../contexts/CursorContext";
+import { useSection } from "../contexts/SectionContext";
 import content from "../content/about.json";
 import { ReactComponent as IconDown } from "../assets/icons/chevron-down.svg";
 
 function About() {
   const { language } = useLanguage();
   const { setState } = useCursor();
+  const { link } = useSection();
 
   return (
     <Wrapper id="about">
@@ -25,7 +27,8 @@ function About() {
           ))}
         </ul>
         <Link
-          href="#projects"
+          href="#project-1"
+          onClick={() => link("project-1")}
           onMouseEnter={() => setState("hidden")}
           onMouseLeave={() => setState("basic")}
         >

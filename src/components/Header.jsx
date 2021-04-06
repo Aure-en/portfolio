@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { useCursor } from "../contexts/CursorContext";
+import { useSection } from "../contexts/SectionContext";
 
 function Header() {
   const { setState } = useCursor();
+  const { link } = useSection();
 
   return (
     <Wrapper>
@@ -12,13 +14,15 @@ function Header() {
           href="#about"
           onMouseEnter={() => setState("hidden")}
           onMouseLeave={() => setState("basic")}
+          onClick={() => link("about")}
         >
           About
         </a>
         <a
-          href="#projects"
+          href="#project-1"
           onMouseEnter={() => setState("hidden")}
           onMouseLeave={() => setState("basic")}
+          onClick={() => link("project-1")}
         >
           Projects
         </a>
@@ -26,6 +30,7 @@ function Header() {
           href="#contact"
           onMouseEnter={() => setState("hidden")}
           onMouseLeave={() => setState("basic")}
+          onClick={() => link("contact")}
         >
           Contact
         </a>
