@@ -3,25 +3,34 @@ import styled from "styled-components";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { CursorProvider } from "./contexts/CursorContext";
+import { SectionProvider } from "./contexts/SectionContext";
 import Header from "./components/Header";
 import About from "./components/About";
 import Projects from "./components/projects/Projects";
 import Contact from "./components/Contact";
 import GlobalStyles from "./styles/globalStyles";
+import projects from "./content/projects.json";
 import "normalize.css";
+
+const sections = [];
+projects.map((project, index) => sections.push(`project-${index + 1}`));
+sections.unshift("about");
+sections.push("contact");
 
 function App() {
   return (
     <LanguageProvider>
       <ThemeProvider>
         <CursorProvider>
-          <Container>
-            <GlobalStyles />
-            <Header />
-            <About />
-            <Projects />
-            <Contact />
-          </Container>
+          <SectionProvider sections={sections}>
+            <Container>
+              <GlobalStyles />
+              <Header />
+              <About />
+              <Projects />
+              <Contact />
+            </Container>
+          </SectionProvider>
         </CursorProvider>
       </ThemeProvider>
     </LanguageProvider>

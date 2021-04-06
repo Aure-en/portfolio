@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, createContext, useState } from "react";
 import PropTypes from "prop-types";
 import { ThemeProvider as ValueProvider } from "styled-components";
 import light from "../styles/themes/light";
 import dark from "../styles/themes/dark";
 
-const ThemeContext = React.createContext();
+const ThemeContext = createContext();
 
 export function useTheme() {
   return useContext(ThemeContext);
@@ -29,14 +29,6 @@ export function ThemeProvider({ children }) {
     changeTheme,
   };
 
-  ThemeProvider.propTypes = {
-    children: PropTypes.node,
-  };
-
-  ThemeProvider.defaultProps = {
-    children: <div />,
-  };
-
   return (
     <ThemeContext.Provider value={value}>
       <ValueProvider theme={value.theme === "light" ? light : dark}>
@@ -45,3 +37,11 @@ export function ThemeProvider({ children }) {
     </ThemeContext.Provider>
   );
 }
+
+ThemeProvider.propTypes = {
+  children: PropTypes.node,
+};
+
+ThemeProvider.defaultProps = {
+  children: <div />,
+};

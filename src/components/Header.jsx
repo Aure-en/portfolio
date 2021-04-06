@@ -45,6 +45,7 @@ const Wrapper = styled.header`
   max-width: 100%;
   color: ${(props) => props.theme.text_primary};
   background: ${(props) => props.theme.header_bg};
+  z-index: 10;
 
   @media all and (min-width: 576px) {
     justify-content: flex-end;
