@@ -12,11 +12,10 @@ function Buttons({ images, imageNumber, setImageNumber }) {
           key={image}
           type="button"
           onClick={() => setImageNumber(index)}
-          isSelected={imageNumber === index}
           onMouseEnter={() => setState("hidden")}
           onMouseLeave={() => setState("basic")}
         >
-          <Square />
+          <Square isSelected={imageNumber === index} index={index} />
         </Button>
       ))}
     </Container>
@@ -35,7 +34,7 @@ const Container = styled.div`
   align-self: flex-end;
 
   & > button {
-    padding: 0.65rem 0.75rem;
+    padding: 0.5rem 0.75rem;
   }
 
   & > button:last-child {
@@ -54,7 +53,21 @@ const Square = styled.span`
   display: inline-block;
   width: 0.65rem;
   height: 0.65rem;
-  background: ${(props) => props.theme.preview_button};
   cursor: pointer;
   transform: rotate(45deg);
+  background: ${(props) => {
+    switch ((props.index + 1) % 3) {
+      case 1:
+        return props.theme.preview_button_primary;
+      case 2:
+        return props.theme.preview_button_secondary;
+      default:
+        return props.theme.preview_button_tertiary;
+    }
+  }};
+  outline: ${(props) =>
+    props.isSelected
+      ? `2px solid ${props.theme.preview_button_active}`
+      : `2px solid transparent`};
+  box-sizing: content-box;
 `;

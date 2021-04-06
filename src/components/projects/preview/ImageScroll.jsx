@@ -15,7 +15,9 @@ function ImageScroll({ number, src }) {
   // When we switch preview images, scroll back to top.
   useEffect(() => {
     setScrollY(0);
+    containerRef.current.style.scrollBehavior = "smooth";
     containerRef.current.scrollTop = 0;
+    containerRef.current.style.scrollBehavior = "auto";
   }, [number]);
 
   const onMouseUp = (e) => {
@@ -46,6 +48,7 @@ function ImageScroll({ number, src }) {
         container={containerRef}
         content={imageRef}
         src={src}
+        number={number}
       >
         (Drag and scroll)
       </ProgressBar>
@@ -69,7 +72,6 @@ function ImageScroll({ number, src }) {
   );
 }
 
-// Prevents re-render when cursor changes
 export default React.memo(ImageScroll);
 
 ImageScroll.propTypes = {

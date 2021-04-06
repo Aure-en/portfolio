@@ -2,7 +2,7 @@ import React, { useContext, useRef, useEffect } from "react";
 import styled, { ThemeContext } from "styled-components";
 import PropTypes from "prop-types";
 
-function ProgressBar({ isActive, container, content }) {
+function ProgressBar({ isActive, container, content, number }) {
   const theme = useContext(ThemeContext);
   const ref = useRef();
 
@@ -10,18 +10,19 @@ function ProgressBar({ isActive, container, content }) {
     const progress =
       (container.current.scrollTop * 100) /
       (content.current.clientHeight - container.current.clientHeight);
-    if (progress === 100) {
-      ref.current.style.background = `
-            ${theme.progress_filled}
-          `;
-    } else {
-      ref.current.style.background = `linear-gradient(
+
+    ref.current.style.background = `linear-gradient(
             270deg,
-            ${theme.progress_filled} ${progress - 10}%,
+            ${theme.progress_filled} ${
+      progress === "100" ? progress - 10 : progress
+    }%,
             ${theme.progress} ${progress}%
           )`;
-    }
   };
+
+  useEffect(() => {
+    ref.current.style.background = `${theme.progress}`;
+  }, [number]);
 
   useEffect(() => {
     if (!isActive) return;
@@ -40,6 +41,7 @@ ProgressBar.propTypes = {
     .isRequired,
   content: PropTypes.shape({ current: PropTypes.instanceOf(Element) })
     .isRequired,
+  number: PropTypes.number.isRequired,
 };
 
 ProgressBar.defaultProps = {
@@ -58,4 +60,5 @@ const Message = styled.span`
   background: ${(props) => props.theme.progress};
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
+  transition: background 0.2s ease;
 `;
