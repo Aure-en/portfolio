@@ -4,6 +4,7 @@ import { LanguageProvider } from "./contexts/LanguageContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { CursorProvider } from "./contexts/CursorContext";
 import { SectionProvider } from "./contexts/SectionContext";
+import Pages from "./components/Pages";
 import Header from "./components/Header";
 import About from "./components/About";
 import Projects from "./components/projects/Projects";
@@ -26,6 +27,7 @@ function App() {
             <Container>
               <GlobalStyles />
               <Header />
+              <Pages />
               <About />
               <Projects />
               <Contact />

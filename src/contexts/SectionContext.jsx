@@ -81,6 +81,7 @@ export function SectionProvider({ sections, children }) {
 
   const value = {
     section,
+    sections,
     link,
   };
 
