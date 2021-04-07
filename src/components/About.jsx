@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useCursor } from "../contexts/CursorContext";
 import { useSection } from "../contexts/SectionContext";
+import Particles from "./about/Particles";
 import content from "../content/about.json";
 import { ReactComponent as IconDown } from "../assets/icons/chevron-down.svg";
 
@@ -35,6 +36,7 @@ function About() {
           {content[language].link} <IconDown />
         </Link>
       </Container>
+      <Particles />
     </Wrapper>
   );
 }
