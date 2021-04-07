@@ -14,11 +14,12 @@ function Particles() {
     const context = canvas.getContext("2d");
     canvas.width = windowSize.width;
     canvas.height = windowSize.height;
+    context.clearRect(0, 0, canvas.width, canvas.height);
 
     const particles = [];
     const settings = {
-      number: 500,
-      maxLife: 10,
+      number: 50,
+      link_distance: 75,
     };
 
     function Particle() {
@@ -43,16 +44,37 @@ function Particles() {
       context.fill();
     };
 
+    const link = (particles) => {
+      for (let i = 0; i < particles.length; i += 1) {
+        for (let j = 0; j < particles.length; j += 1) {
+          if (
+            Math.abs(particles[i].x - particles[j].x) <
+              settings.link_distance &&
+            Math.abs(particles[i].y - particles[j].y) < settings.link_distance
+          ) {
+            context.lineWidth = 0.15;
+            context.beginPath();
+            context.moveTo(particles[i].x, particles[i].y);
+            context.lineTo(particles[j].x, particles[j].y);
+            context.stroke();
+          }
+        }
+      }
+    };
+
     // Create particles
     for (let i = 0; i < settings.number; i++) {
       new Particle();
     }
 
     // Move particles
-    setInterval(() => {
+    const animation = setInterval(() => {
       context.clearRect(0, 0, canvas.width, canvas.height);
       particles.forEach((particle) => particle.draw());
+      link(particles);
     }, 50);
+
+    return () => clearInterval(animation);
   }, [windowSize]);
 
   return <Canvas ref={canvasRef} />;
