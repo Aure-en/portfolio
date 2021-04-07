@@ -36,6 +36,19 @@ function Particles() {
       this.x += this.vx;
       this.y += this.vy;
 
+      /* Makes sure the particle stays in the canvas.
+        If the particle hits a "wall", change its direction by changing the velocity. */
+
+      if (
+        this.x <= 0 ||
+        this.x >= canvas.width ||
+        this.y <= 0 ||
+        this.y >= canvas.height
+      ) {
+        this.vx = -this.vx * Math.random();
+        this.vy = -this.vy * Math.random();
+      }
+
       // Draw on canvas
       context.beginPath();
       context.fillStyle = theme.particles_primary;
