@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useCursor } from "../contexts/CursorContext";
 import { useSection } from "../contexts/SectionContext";
-import Particles from "./background/Particles";
+import Particles from "./canvas/background/Particles";
+import Border from "./canvas/Border";
 import content from "../content/about.json";
 import { ReactComponent as IconDown } from "../assets/icons/chevron-down.svg";
 
@@ -11,10 +12,11 @@ function About() {
   const { language } = useLanguage();
   const { setState } = useCursor();
   const { link } = useSection();
+  const ref = useRef();
 
   return (
     <Wrapper id="about">
-      <Container>
+      <Container ref={ref}>
         <Title>{content[language].title}</Title>
         <Text>
           {content[language].text.map((paragraph) => (
@@ -36,6 +38,7 @@ function About() {
           {content[language].link} <IconDown />
         </Link>
       </Container>
+      <Border element={ref} radius={250} />
       <Particles />
     </Wrapper>
   );
@@ -61,11 +64,6 @@ const Container = styled.main`
   z-index: 2;
   background: ${(props) => props.theme.background};
   border: 1px solid ${(props) => props.theme.border};
-
-  @media all and (min-width: 1200px) {
-    position: relative;
-    left: -5vw;
-  }
 `;
 
 const Text = styled.div``;

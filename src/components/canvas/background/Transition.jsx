@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
-import useWindowSize from "../../hooks/useWindowSize";
+import useWindowSize from "../../../hooks/useWindowSize";
 import Particle from "./Particle";
 
 function Transition() {

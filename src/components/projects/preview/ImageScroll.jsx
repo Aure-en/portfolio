@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { useCursor } from "../../../contexts/CursorContext";
 import ProgressBar from "./ProgressBar";
+import Border from "../../canvas/Border";
 
 function ImageScroll({ number, src }) {
   const { setState } = useCursor();
@@ -52,6 +53,7 @@ function ImageScroll({ number, src }) {
       >
         (Drag and scroll)
       </ProgressBar>
+      <Border element={containerRef} radius={150} />
       <Container
         ref={containerRef}
         onMouseDown={onMouseDown}
@@ -80,7 +82,7 @@ ImageScroll.propTypes = {
 };
 
 const Container = styled.div`
-  height: 70vh;
+  height: 630px;
   width: 25rem;
   overflow: hidden;
   border: 1px solid ${(props) => props.theme.border};

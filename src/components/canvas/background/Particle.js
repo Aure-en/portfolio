@@ -10,7 +10,7 @@ function Particle(canvas, context, color) {
   this.color = color;
 }
 
-Particle.prototype.draw = function () {
+Particle.prototype.draw = function() {
   this.x += this.vx;
   this.y += this.vy;
 
