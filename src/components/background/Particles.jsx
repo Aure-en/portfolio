@@ -2,6 +2,7 @@
 import React, { useRef, useEffect, useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
 import useWindowSize from "../../hooks/useWindowSize";
+import Particle from "./Particle";
 
 function Particles() {
   const canvasRef = useRef();
@@ -30,45 +31,6 @@ function Particles() {
       distance_mouse: 200,
     };
 
-    function Particle() {
-      // Particle settings (initial position, velocity)
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.vx = Math.random() - 0.5;
-      this.vy = Math.random() - 0.5;
-      this.size = Math.random();
-      this.color =
-        Math.random() > 0.25
-          ? theme.particles_primary
-          : theme.particles_secondary;
-      particles.push(this);
-    }
-
-    Particle.prototype.draw = function () {
-      this.x += this.vx;
-      this.y += this.vy;
-
-      /* Makes sure the particle stays in the canvas.
-        If the particle hits a "wall", change its direction by changing the velocity. */
-
-      if (
-        this.x <= 0 ||
-        this.x >= canvas.width ||
-        this.y <= 0 ||
-        this.y >= canvas.height
-      ) {
-        this.vx = -this.vx * Math.random();
-        this.vy = -this.vy * Math.random();
-      }
-
-      // Draw on canvas
-      context.beginPath();
-      context.fillStyle = this.color;
-      context.arc(this.x, this.y, this.size, 0, Math.PI * 2, true);
-      context.closePath();
-      context.fill();
-    };
-
     const link = (particles) => {
       const { mouseX, mouseY } = mouseRef.current;
       const linked = particles.filter(
@@ -94,8 +56,13 @@ function Particles() {
             );
             gradient.addColorStop(0, theme.line_primary);
             gradient.addColorStop(0.5, theme.line_secondary);
-            Math.random() > 0.5 &&
+
+            if (Math.random() > 0.5) {
+              gradient.addColorStop(0.65, theme.line_transition);
               gradient.addColorStop(0.75, theme.particles_secondary);
+              gradient.addColorStop(0.85, theme.line_transition);
+            }
+
             gradient.addColorStop(1, theme.line_primary);
             context.strokeStyle = gradient;
             context.lineWidth = 0.15;
@@ -110,7 +77,14 @@ function Particles() {
 
     // Create particles
     for (let i = 0; i < settings.number; i += 1) {
-      new Particle();
+      const particle = new Particle(
+        canvas,
+        context,
+        Math.random() > 0.25
+          ? theme.particles_primary
+          : theme.particles_secondary
+      );
+      particles.push(particle);
     }
 
     // Move particles

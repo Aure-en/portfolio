@@ -12,6 +12,7 @@ const colors = {
   particles_secondary: "rgb(219, 178, 96)",
   line_primary: "rgb(215, 215, 215)",
   line_secondary: "rgb(235, 235, 235)",
+  line_transition: "rgb(247, 229, 193)",
 
   preview_button_primary: "rgb(225, 225, 225)",
   preview_button_secondary: "rgb(175, 175, 175)",
