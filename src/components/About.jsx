@@ -55,9 +55,12 @@ const Wrapper = styled.div`
 const Container = styled.main`
   display: flex;
   flex-direction: column;
-  padding: 3rem 4rem;
+  padding: 3rem 5rem;
   width: 100vw;
   max-width: 50rem;
+  z-index: 2;
+  background: ${(props) => props.theme.background};
+  border: 1px solid ${(props) => props.theme.border};
 
   @media all and (min-width: 1200px) {
     position: relative;
@@ -89,6 +92,7 @@ const Link = styled.a`
   text-transform: uppercase;
   align-self: flex-end;
   margin-top: 0.5rem;
+  pointer-events: auto;
 
   & > svg {
     margin-left: 0.5rem;

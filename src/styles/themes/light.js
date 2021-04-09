@@ -8,8 +8,10 @@ const colors = {
   progress: "rgb(166, 166, 166)",
   progress_filled: "rgb(0, 0, 0)",
 
-  particles_primary: "rgb(166, 166, 166)",
+  particles_primary: "rgb(215, 215, 215)",
   particles_secondary: "rgb(219, 178, 96)",
+  line_primary: "rgb(215, 215, 215)",
+  line_secondary: "rgb(235, 235, 235)",
 
   preview_button_primary: "rgb(225, 225, 225)",
   preview_button_secondary: "rgb(175, 175, 175)",

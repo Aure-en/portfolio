@@ -8,6 +8,13 @@ function Particles() {
   const theme = useContext(ThemeContext);
   const { windowSize } = useWindowSize();
 
+  /* Using ref because:
+  - With state, the component would rerender everytime we move the mouse.
+  - With simple variables, the event listener wouldn't update them properly.
+  */
+  const mouseRef = useRef();
+  mouseRef.current = { mouseX: 0, mouseY: 0 };
+
   useEffect(() => {
     if (windowSize.width === 0 || windowSize.height === 0) return;
     const canvas = canvasRef.current;
@@ -18,8 +25,9 @@ function Particles() {
 
     const particles = [];
     const settings = {
-      number: 50,
+      number: 500,
       link_distance: 75,
+      distance_mouse: 200,
     };
 
     function Particle() {
@@ -28,7 +36,11 @@ function Particles() {
       this.y = Math.random() * canvas.height;
       this.vx = Math.random() - 0.5;
       this.vy = Math.random() - 0.5;
-      this.size = Math.random() * 1.5;
+      this.size = Math.random();
+      this.color =
+        Math.random() > 0.25
+          ? theme.particles_primary
+          : theme.particles_secondary;
       particles.push(this);
     }
 
@@ -51,24 +63,45 @@ function Particles() {
 
       // Draw on canvas
       context.beginPath();
-      context.fillStyle = theme.particles_primary;
+      context.fillStyle = this.color;
       context.arc(this.x, this.y, this.size, 0, Math.PI * 2, true);
       context.closePath();
       context.fill();
     };
 
     const link = (particles) => {
-      for (let i = 0; i < particles.length; i += 1) {
-        for (let j = 0; j < particles.length; j += 1) {
-          if (
-            Math.abs(particles[i].x - particles[j].x) <
-              settings.link_distance &&
-            Math.abs(particles[i].y - particles[j].y) < settings.link_distance
-          ) {
+      const { mouseX, mouseY } = mouseRef.current;
+      const linked = particles.filter(
+        (particle) =>
+          (particle.x - mouseX) ** 2 + (particle.y - mouseY) ** 2 <
+          settings.distance_mouse ** 2
+      );
+
+      for (let i = 0; i < linked.length; i += 1) {
+        for (let j = 0; j < linked.length; j += 1) {
+          const distanceX =
+            Math.abs(linked[i].x - linked[j].x) - settings.link_distance;
+          const distanceY =
+            Math.abs(linked[i].y - linked[j].y) - settings.link_distance;
+
+          if (distanceX < 0 && distanceY < 0) {
+            // Coloring the line.
+            const gradient = context.createLinearGradient(
+              linked[i].x,
+              linked[i].y,
+              linked[j].x,
+              linked[j].y
+            );
+            gradient.addColorStop(0, theme.line_primary);
+            gradient.addColorStop(0.5, theme.line_secondary);
+            Math.random() > 0.5 &&
+              gradient.addColorStop(0.75, theme.particles_secondary);
+            gradient.addColorStop(1, theme.line_primary);
+            context.strokeStyle = gradient;
             context.lineWidth = 0.15;
             context.beginPath();
-            context.moveTo(particles[i].x, particles[i].y);
-            context.lineTo(particles[j].x, particles[j].y);
+            context.moveTo(linked[i].x, linked[i].y);
+            context.lineTo(linked[j].x, linked[j].y);
             context.stroke();
           }
         }
@@ -76,7 +109,7 @@ function Particles() {
     };
 
     // Create particles
-    for (let i = 0; i < settings.number; i++) {
+    for (let i = 0; i < settings.number; i += 1) {
       new Particle();
     }
 
@@ -86,16 +119,29 @@ function Particles() {
       particles.forEach((particle) => particle.draw());
       link(particles);
     }, 50);
-
     return () => clearInterval(animation);
   }, [windowSize]);
 
-  return <Canvas ref={canvasRef} />;
+  const updatePosition = (e) => {
+    mouseRef.current = { mouseX: e.clientX, mouseY: e.clientY };
+  };
+
+  return (
+    <Canvas
+      ref={canvasRef}
+      onMouseEnter={() => {
+        window.addEventListener("mousemove", updatePosition);
+      }}
+      onMouseLeave={() => {
+        window.removeEventListener("mousemove", updatePosition);
+      }}
+    />
+  );
 }
 
 export default Particles;
 
 const Canvas = styled.canvas`
   position: absolute;
-  z-index: -1;
+  z-index: 1;
 `;
