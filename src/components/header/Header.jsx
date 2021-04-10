@@ -1,40 +1,68 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
-import { useCursor } from "../contexts/CursorContext";
-import { useSection } from "../contexts/SectionContext";
+import { useCursor } from "../../contexts/CursorContext";
+import { useSection } from "../../contexts/SectionContext";
+import Line from "./Line";
 
 function Header() {
   const { setState } = useCursor();
-  const { link } = useSection();
+  const { prev, section, sections, link } = useSection();
+
+  // To create the decorative line under the elements.
+  const aboutRef = useRef();
+  const projectsRef = useRef();
+  const contactRef = useRef();
 
   return (
     <Wrapper>
       <Container>
-        <a
+        <Link
           href="#about"
           onMouseEnter={() => setState("hidden")}
           onMouseLeave={() => setState("basic")}
           onClick={() => link("about")}
+          isActive={sections[section] === "about"}
+          ref={aboutRef}
         >
           About
-        </a>
-        <a
+        </Link>
+        <Link
           href="#project-1"
           onMouseEnter={() => setState("hidden")}
           onMouseLeave={() => setState("basic")}
           onClick={() => link("project-1")}
+          isActive={sections[section].includes("project")}
+          ref={projectsRef}
         >
           Projects
-        </a>
-        <a
+        </Link>
+        <Link
           href="#contact"
           onMouseEnter={() => setState("hidden")}
           onMouseLeave={() => setState("basic")}
           onClick={() => link("contact")}
+          isActive={sections[section] === "contact"}
+          ref={contactRef}
         >
           Contact
-        </a>
+        </Link>
       </Container>
+      <Line
+        prev={
+          prev === 0
+            ? aboutRef
+            : prev === sections.length - 1
+            ? contactRef
+            : projectsRef
+        }
+        current={
+          section === 0
+            ? aboutRef
+            : section === sections.length - 1
+            ? contactRef
+            : projectsRef
+        }
+      />
     </Wrapper>
   );
 }
@@ -69,5 +97,13 @@ const Container = styled.nav`
     font-weight: 300;
     font-size: 1.125rem;
     padding: 1rem;
+  }
+`;
+
+const Link = styled.a`
+  position: relative;
+
+  &:hover {
+    color: ${(props) => props.theme.text_secondary};
   }
 `;

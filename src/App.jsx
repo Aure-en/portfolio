@@ -5,7 +5,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { CursorProvider } from "./contexts/CursorContext";
 import { SectionProvider } from "./contexts/SectionContext";
 import Pages from "./components/Pages";
-import Header from "./components/Header";
+import Header from "./components/header/Header";
 import About from "./components/About";
 import Projects from "./components/projects/Projects";
 import Contact from "./components/Contact";

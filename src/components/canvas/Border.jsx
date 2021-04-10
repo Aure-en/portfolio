@@ -69,6 +69,17 @@ function Border({ element, radius }) {
 
 export default Border;
 
+Border.propTypes = {
+  element: PropTypes.shape({
+    current: PropTypes.node,
+  }).isRequired,
+  radius: PropTypes.number,
+};
+
+Border.defaultProps = {
+  radius: 300,
+};
+
 const Canvas = styled.canvas`
   position: absolute;
   z-index: 10;

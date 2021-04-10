@@ -7,6 +7,7 @@ function Transition() {
   const canvasRef = useRef();
   const theme = useContext(ThemeContext);
   const { windowSize } = useWindowSize();
+  let raf;
 
   useEffect(() => {
     if (windowSize.width === 0 || windowSize.height === 0) return;
@@ -34,11 +35,13 @@ function Transition() {
     }
 
     // Move particles
-    const animation = setInterval(() => {
+    const animate = () => {
       context.clearRect(0, 0, canvas.width, canvas.height);
       particles.forEach((particle) => particle.draw());
-    }, 50);
-    return () => clearInterval(animation);
+      raf = window.requestAnimationFrame(animate);
+    };
+    raf = window.requestAnimationFrame(animate);
+    return () => window.cancelAnimationFrame(raf);
   }, [windowSize]);
 
   return <Canvas ref={canvasRef} />;

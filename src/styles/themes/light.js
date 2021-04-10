@@ -1,8 +1,13 @@
 const colors = {
   background: "rgb(255, 255, 255)",
-  text_primary: "rgb(55, 55, 55)",
-  header_bg: "rgb(255, 255, 255)",
   cursor: "rgb(0, 0, 0)",
+
+  text_primary: "rgb(55, 55, 55)",
+  text_secondary: "rgb(105, 105, 105)",
+  text_accent: "rgb(171, 140, 95)",
+
+  header_bg: "rgb(255, 255, 255)",
+  header_accent: "rgba(219, 178, 96, 0.5)",
 
   border: "rgb(150, 150, 150)",
   border_hover_primary: "rgb(224, 213, 202)",
