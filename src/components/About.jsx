@@ -1,17 +1,14 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
 import { useLanguage } from "../contexts/LanguageContext";
-import { useCursor } from "../contexts/CursorContext";
-import { useSection } from "../contexts/SectionContext";
 import Particles from "./canvas/background/Particles";
 import Border from "./canvas/Border";
+import View from "./shared/View";
 import content from "../content/about.json";
 import { ReactComponent as IconDown } from "../assets/icons/chevron-down.svg";
 
 function About() {
   const { language } = useLanguage();
-  const { setState } = useCursor();
-  const { link } = useSection();
   const ref = useRef();
 
   return (
@@ -29,14 +26,9 @@ function About() {
             <li key={interest}>{interest}</li>
           ))}
         </ul>
-        <Link
-          href="#project-1"
-          onClick={() => link("project-1")}
-          onMouseEnter={() => setState("hidden")}
-          onMouseLeave={() => setState("basic")}
-        >
+        <View>
           {content[language].link} <IconDown />
-        </Link>
+        </View>
       </Container>
       <Border element={ref} radius={250} />
       <Particles />
@@ -80,19 +72,4 @@ const Interest = styled.h3`
   font-family: "Playfair Display", "Source Sans Pro", "Open Sans",
     "Trebuchet MS", "Verdana", sans-serif;
   font-weight: 300;
-`;
-
-const Link = styled.a`
-  display: flex;
-  align-items: center;
-  border: 1px solid ${(props) => props.theme.border};
-  padding: 0.5rem 1rem;
-  text-transform: uppercase;
-  align-self: flex-end;
-  margin-top: 0.5rem;
-  pointer-events: auto;
-
-  & > svg {
-    margin-left: 0.5rem;
-  }
 `;

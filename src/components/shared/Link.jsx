@@ -74,24 +74,16 @@ const StyledLink = styled.a`
     height: 100%;
   }
 
-  // Bottom line
-  &:before {
+  &:before, // Bottom line
+  & > span:before {
+    // Top line
     transform: translateX(-100%);
   }
 
-  // Right line
-  &:after {
-    transform: translateY(-100%);
-  }
-
-  // Top line
-  & > span:before {
-    transform: translateX(100%);
-  }
-
-  // Left line
+  &:after, // Right line
   & > span:after {
-    transform: translateY(100%);
+    // Left line
+    transform: translateY(-100%);
   }
 
   &:hover:before,
