@@ -13,7 +13,7 @@ const colors = {
 
   particles_primary: "rgb(205, 205, 205)",
   particles_secondary: "rgb(219, 178, 96)",
-  line_primary: "rgb(215, 215, 215)",
+  line_primary: "rgb(195, 195, 195)",
   line_secondary: "rgb(235, 235, 235)",
   line_transition: "rgb(247, 229, 193)",
 

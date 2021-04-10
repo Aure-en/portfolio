@@ -7,6 +7,7 @@ function Particles() {
   const canvasRef = useRef();
   const theme = useContext(ThemeContext);
   const { windowSize } = useWindowSize();
+  let raf;
 
   /* Using ref because:
   - With state, the component would rerender everytime we move the mouse.
@@ -86,13 +87,14 @@ function Particles() {
       particles.push(particle);
     }
 
-    // Move particles
-    const animation = setInterval(() => {
+    const animate = () => {
       context.clearRect(0, 0, canvas.width, canvas.height);
       particles.forEach((particle) => particle.draw());
       link(particles);
-    }, 50);
-    return () => clearInterval(animation);
+      raf = window.requestAnimationFrame(animate);
+    };
+    raf = window.requestAnimationFrame(animate);
+    return () => window.cancelAnimationFrame(raf);
   }, [windowSize]);
 
   const updatePosition = (e) => {

@@ -23,8 +23,8 @@ Particle.prototype.draw = function() {
     this.y <= 0 ||
     this.y >= this.canvas.height
   ) {
-    this.vx = -this.vx * Math.random();
-    this.vy = -this.vy * Math.random();
+    this.vx = -this.vx;
+    this.vy = -this.vy;
   }
 
   // Draw on canvas

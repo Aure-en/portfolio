@@ -9,6 +9,7 @@ function Border({ element, radius }) {
   const { windowSize } = useWindowSize();
   const mouseRef = useRef();
   mouseRef.current = { mouseX: 0, mouseY: 0 };
+  let raf;
 
   useEffect(() => {
     if (windowSize.width === 0 || windowSize.height === 0) return;
@@ -18,7 +19,7 @@ function Border({ element, radius }) {
     canvas.height = element.current.offsetHeight;
     context.clearRect(0, 0, canvas.width, canvas.height);
 
-    const drawGlow = () => {
+    const draw = () => {
       const { mouseX, mouseY } = mouseRef.current;
 
       // Create gradient effect around the mouse
@@ -46,12 +47,9 @@ function Border({ element, radius }) {
 
       // Delete everything that isn't on the border
       context.clearRect(1, 1, canvas.width - 2, canvas.height - 2);
+      raf = window.requestAnimationFrame(draw);
     };
-
-    const animation = setInterval(() => {
-      drawGlow();
-    }, 50);
-    return () => clearInterval(animation);
+    raf = window.requestAnimationFrame(draw);
   }, [windowSize]);
 
   const updatePosition = (e) => {
@@ -60,7 +58,10 @@ function Border({ element, radius }) {
 
   useEffect(() => {
     window.addEventListener("mousemove", updatePosition);
-    return () => window.removeEventListener("mousemove", updatePosition);
+    return () => {
+      window.removeEventListener("mousemove", updatePosition);
+      window.cancelAnimationFrame(raf);
+    };
   }, []);
 
   return <Canvas ref={canvasRef} />;
