@@ -45,7 +45,7 @@ const Link = styled.a`
   & > span:after {
     position: absolute;
     content: "";
-    transition: transform 0.5s linear infi;
+    transition: transform 0.5s linear;
   }
 
   &:before,

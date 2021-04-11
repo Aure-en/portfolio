@@ -1,37 +1,74 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { useCursor } from "../contexts/CursorContext";
 import contact from "../content/contact.json";
 
 // Icons
 import { ReactComponent as IconGithub } from "../assets/icons/github.svg";
 import { ReactComponent as IconMail } from "../assets/icons/mail.svg";
+import { ReactComponent as IconSend } from "../assets/icons/send.svg";
 
 function Contact() {
-  const { setState } = useCursor();
+  const [inputs, setInputs] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
 
   return (
     <Wrapper id="contact">
       <Container>
-        <Text>Contact</Text>
-        <List>
-          <Social
-            onMouseEnter={() => setState("hidden")}
-            onMouseLeave={() => setState("basic")}
-          >
-            <a href={`mailto:${contact.mail}`}>
-              <IconMail />
-            </a>
-          </Social>
-          <Social
-            onMouseEnter={() => setState("hidden")}
-            onMouseLeave={() => setState("basic")}
-          >
-            <a href={contact.github}>
-              <IconGithub />
-            </a>
-          </Social>
-        </List>
+        <Header>
+          <Title>Contact</Title>
+          <Icon>
+            <IconSend />
+          </Icon>
+        </Header>
+        <Text>Feel free to contact me for any inquiry, and I will get back to you as soon as I can.</Text>
+        <Form action="https://mailthis.to/nn.aurelie@gmail.com" method="POST">
+          <label htmlFor="name">
+            <Input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Name"
+              value={inputs.name}
+              onChange={handleInputChange}
+            />
+          </label>
+
+          <label htmlFor="email">
+            <Input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
+              value={inputs.email}
+              onChange={handleInputChange}
+            />
+          </label>
+
+          <label htmlFor="message">
+            <Input
+              as="textarea"
+              rows={1}
+              name="message"
+              id="message"
+              placeholder="Message"
+              value={inputs.message}
+              onChange={handleInputChange}
+            />
+          </label>
+
+          <button type="submit">Send Message</button>
+        </Form>
       </Container>
     </Wrapper>
   );
@@ -40,6 +77,9 @@ function Contact() {
 export default Contact;
 
 const Wrapper = styled.footer`
+  width: 100vw;
+  min-height: 100vh;
+  max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,40 +87,73 @@ const Wrapper = styled.footer`
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
+  width: 100vw;
+  padding: 3rem 8rem;
+  max-width: 40rem;
 `;
 
-const Text = styled.div`
+const Header = styled.div`
+  display: inline-block;
+  position: relative;
+`;
+
+const Title = styled.h2`
+  position: relative;
+  left: -2rem;
+  font-family: "Playfair Display", "Source Sans Pro", "Open Sans",
+    "Trebuchet MS", "Verdana", sans-serif;
+  font-size: 5rem;
+  line-height: 5rem;
+  margin: 0 0 2rem 0;
+  font-weight: 400;
+`;
+
+const Icon = styled.span`
   display: flex;
   align-items: center;
-  margin-bottom: 0.5rem;
+  position: absolute;
+  bottom: -1.125rem;
+  right: -5rem;
 
-  &:after {
+  &:before {
     content: "";
     display: inline-block;
     width: 5rem;
     height: 1px;
-    background: linear-gradient(
-      to right,
-      transparent,
-      ${(props) => props.theme.text_primary},
-      transparent
-    );
-    margin: 0 1rem;
+    background: ${(props) => props.theme.text_primary};
+    margin-right: 1rem;
   }
 `;
 
-const List = styled.ul`
-  display: flex;
-  list-style: none;
-  padding: 0;
+const Text = styled.p`
+  position: relative;
+  text-indent: 0;
+  max-width: 16rem;
+  margin: 2rem 0;
+  left: 3rem;
 `;
 
-const Social = styled.li`
-  padding: 0 0.25rem;
-  cursor: pointer;
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+`;
 
-  & svg {
-    cursor: pointer;
+const Input = styled.input`
+  border: none;
+  border-bottom: 1px solid ${(props) => props.theme.border};
+  padding: 0.5rem 0 0.25rem 0;
+  margin: 2rem 0;
+  width: 100%;
+
+  &::placeholder {
+    color: ${(props) => props.theme.border};
+  }
+
+  &:focus {
+    border-bottom: 1px solid ${(props) => props.theme.text_primary};
+    outline: 1px solid transparent;
   }
 `;
