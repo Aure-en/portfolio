@@ -45,7 +45,7 @@ const Link = styled.a`
   & > span:after {
     position: absolute;
     content: "";
-    transition: transform 1s linear;
+    transition: transform 0.5s linear infi;
   }
 
   &:before,
@@ -75,13 +75,11 @@ const Link = styled.a`
   &:before,
   &:after {
     right: 0;
-    bottom: 0;
   }
 
   & > span:before,
   & > span:after {
     left: 0;
-    top: 0;
   }
 
   &:before,
@@ -98,22 +96,29 @@ const Link = styled.a`
 
   // Bottom line
   &:before {
+    bottom: 0;
     transform: translateX(calc(100% / 3 * 2));
+    transition-delay: 1s;
   }
 
   // Top line
   & > span:before {
     transform: translateX(calc(-100% / 3 * 2));
+    top: 0;
   }
 
   // Right line
   &:after {
-    transform: translateY(calc(100% / 3 * 2));
+    top: 0;
+    transform: translateY(calc(-100% / 3 * 2));
+    transition-delay: 0.5s;
   }
 
   // Left line
   & > span:after {
-    transform: translateY(calc(-100% / 3 * 2));
+    bottom: 0;
+    transform: translateY(calc(100% / 3 * 2));
+    transition-delay: 1.5s;
   }
 
   &:hover:before,

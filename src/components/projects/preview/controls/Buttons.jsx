@@ -67,7 +67,7 @@ const Square = styled.span`
   }};
   outline: ${(props) =>
     props.isSelected
-      ? `2px solid ${props.theme.preview_button_active}`
-      : `2px solid transparent`};
+      ? `1px solid ${props.theme.border_hover_secondary}`
+      : `1px solid transparent`};
   box-sizing: content-box;
 `;
