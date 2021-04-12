@@ -13,6 +13,8 @@ const colors = {
   border_hover_primary: "rgb(224, 213, 202)",
   border_hover_secondary: "rgb(175, 175, 175)",
 
+  error: "rgb(144, 37, 37)",
+
   progress: "rgb(166, 166, 166)",
   progress_filled: "rgb(0, 0, 0)",
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import TextareaAutosize from "react-textarea-autosize";
 import Submit from "./shared/buttons/Submit";
 import Diagonal from "./canvas/background/Diagonal";
 import Transition from "./canvas/background/Transition";
@@ -21,6 +22,7 @@ function Contact() {
     email: "",
     message: "",
   });
+  const [message, setMessage] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -40,12 +42,16 @@ function Contact() {
 
     Object.keys(inputs).map((key) => {
       if (!inputs[key]) {
-        setErrors({ ...errors, [key]: "This field is required." });
+        setErrors((prev) => ({ ...prev, [key]: "This field is required." }));
         hasError = true;
       }
     });
 
-    if (hasError) e.preventDefault();
+    if (hasError) {
+      e.preventDefault();
+      return;
+    }
+    setMessage("Your message has been sent.");
   };
 
   return (
@@ -66,41 +72,55 @@ function Contact() {
           method="POST"
           onSubmit={onSubmit}
         >
-          <label htmlFor="name">
-            <Input
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Name"
-              value={inputs.name}
-              onChange={handleInputChange}
-            />
-          </label>
+          <Field>
+            <label htmlFor="name">
+              <Input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Name"
+                value={inputs.name}
+                onChange={handleInputChange}
+                $hasError={errors.name}
+              />
+            </label>
+            {errors.name && <Error>{errors.name}</Error>}
+          </Field>
 
-          <label htmlFor="email">
-            <Input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Email"
-              value={inputs.email}
-              onChange={handleInputChange}
-            />
-          </label>
+          <Field>
+            <label htmlFor="email">
+              <Input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email"
+                value={inputs.email}
+                onChange={handleInputChange}
+                $hasError={errors.email}
+              />
+            </label>
+            {errors.email && <Error>{errors.email}</Error>}
+          </Field>
 
-          <label htmlFor="message">
-            <Input
-              as="textarea"
-              rows={1}
-              name="message"
-              id="message"
-              placeholder="Message"
-              value={inputs.message}
-              onChange={handleInputChange}
-            />
-          </label>
+          <Field>
+            <label htmlFor="message">
+              <Textarea
+                name="message"
+                id="message"
+                placeholder="Message"
+                value={inputs.message}
+                onChange={handleInputChange}
+                maxRows={5}
+                $hasError={errors.message}
+              />
+            </label>
+            {errors.message && <Error>{errors.message}</Error>}
+          </Field>
 
-          <Submit>Send Message</Submit>
+          <Validation>
+            <Submit>Send Message</Submit>
+            {message && <Message>{message}</Message>}
+          </Validation>
         </Form>
         <Line position="left" />
         <Line position="right" />
@@ -183,11 +203,15 @@ const Form = styled.form`
   align-self: stretch;
 `;
 
+const Field = styled.div`
+  margin: 1.5rem 0;
+`;
+
 const Input = styled.input`
   border: none;
-  border-bottom: 1px solid ${(props) => props.theme.border};
+  border-bottom: 1px solid
+    ${(props) => (props.$hasError ? props.theme.error : props.theme.border)};
   padding: 0.5rem 0 0.25rem 0;
-  margin: 2rem 0;
   width: 100%;
 
   &::placeholder {
@@ -198,6 +222,42 @@ const Input = styled.input`
     border-bottom: 1px solid ${(props) => props.theme.text_primary};
     outline: 1px solid transparent;
   }
+`;
+
+const Textarea = styled(TextareaAutosize)`
+  border: none;
+  border-bottom: 1px solid
+    ${(props) => (props.$hasError ? props.theme.error : props.theme.border)};
+  padding: 0.5rem 0 0.25rem 0;
+  width: 100%;
+
+  &::placeholder {
+    color: ${(props) => props.theme.border};
+  }
+
+  &:focus {
+    border-bottom: 1px solid ${(props) => props.theme.text_primary};
+    outline: 1px solid transparent;
+  }
+`;
+
+const Validation = styled.div`
+  position: relative;
+  align-self: flex-end;
+
+  & > button {
+    margin-bottom: 0.5rem;
+  }
+`;
+
+const Message = styled.div`
+  position: absolute;
+  font-size: 0.75rem;
+  text-align: center;
+`;
+
+const Error = styled(Message)`
+  color: ${(props) => props.theme.error};
 `;
 
 const Line = styled.span`
