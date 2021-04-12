@@ -2,6 +2,8 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 import { useCursor } from "../../contexts/CursorContext";
 import { useSection } from "../../contexts/SectionContext";
+import Language from "./switch/Language";
+import Theme from "./switch/Theme";
 import Line from "./Line";
 
 function Header() {
@@ -46,6 +48,8 @@ function Header() {
         >
           Contact
         </Link>
+        <Theme />
+        <Language />
       </Container>
       <Line
         prev={
@@ -90,9 +94,6 @@ const Container = styled.nav`
   display: flex;
 
   & > a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     text-transform: uppercase;
     font-weight: 300;
     font-size: 1.125rem;
