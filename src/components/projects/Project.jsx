@@ -2,10 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { useLanguage } from "../../contexts/LanguageContext";
+import { useCursor } from "../../contexts/CursorContext";
 import Preview from "./preview/Preview";
-import Link from "../shared/Link";
+import Link from "../shared/links/Link";
 
 function Project({ project }) {
+  const { setState } = useCursor();
   const { language } = useLanguage();
 
   return (
@@ -15,7 +17,12 @@ function Project({ project }) {
 
         <Content>
           <Header>
-            <Title>{project.title}</Title>
+            <Title
+              onMouseEnter={() => setState("hidden")}
+              onMouseLeave={() => setState("basic")}
+            >
+              <a href={project.view}>{project.title}</a>
+            </Title>
             <Number>
               {project.id < 10 && "0"}
               {project.id}

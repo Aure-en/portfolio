@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useLanguage } from "../contexts/LanguageContext";
 import Particles from "./canvas/background/Particles";
 import Border from "./canvas/Border";
-import View from "./shared/View";
+import View from "./shared/links/View";
 import content from "../content/about.json";
 import { ReactComponent as IconDown } from "../assets/icons/chevron-down.svg";
 

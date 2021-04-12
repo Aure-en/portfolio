@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import Submit from "./shared/buttons/Submit";
+import Diagonal from "./canvas/background/Diagonal";
+import Transition from "./canvas/background/Transition";
 import contact from "../content/contact.json";
 
 // Icons
@@ -13,6 +16,11 @@ function Contact() {
     email: "",
     message: "",
   });
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -20,6 +28,24 @@ function Contact() {
       ...inputs,
       [name]: value,
     });
+  };
+
+  const onSubmit = (e) => {
+    let hasError = false;
+    setErrors({
+      name: "",
+      email: "",
+      message: "",
+    });
+
+    Object.keys(inputs).map((key) => {
+      if (!inputs[key]) {
+        setErrors({ ...errors, [key]: "This field is required." });
+        hasError = true;
+      }
+    });
+
+    if (hasError) e.preventDefault();
   };
 
   return (
@@ -31,8 +57,15 @@ function Contact() {
             <IconSend />
           </Icon>
         </Header>
-        <Text>Feel free to contact me for any inquiry, and I will get back to you as soon as I can.</Text>
-        <Form action="https://mailthis.to/nn.aurelie@gmail.com" method="POST">
+        <Text>
+          Feel free to contact me for any inquiry, and I will get back to you as
+          soon as I can.
+        </Text>
+        <Form
+          action="https://mailthis.to/nn.aurelie@gmail.com"
+          method="POST"
+          onSubmit={onSubmit}
+        >
           <label htmlFor="name">
             <Input
               type="text"
@@ -67,16 +100,22 @@ function Contact() {
             />
           </label>
 
-          <button type="submit">Send Message</button>
+          <Submit>Send Message</Submit>
         </Form>
+        <Line position="left" />
+        <Line position="right" />
+        <Line position="bottom" />
       </Container>
+      <Diagonal />
+      <Transition />
     </Wrapper>
   );
 }
 
 export default Contact;
 
-const Wrapper = styled.footer`
+const Wrapper = styled.div`
+  position: relative;
   width: 100vw;
   min-height: 100vh;
   max-width: 100%;
@@ -86,12 +125,15 @@ const Wrapper = styled.footer`
 `;
 
 const Container = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100vw;
-  padding: 3rem 8rem;
-  max-width: 40rem;
+  padding: 5rem 10rem;
+  max-width: 45rem;
+  background: ${(props) => props.theme.background};
+  z-index: 2;
 `;
 
 const Header = styled.div`
@@ -156,4 +198,27 @@ const Input = styled.input`
     border-bottom: 1px solid ${(props) => props.theme.text_primary};
     outline: 1px solid transparent;
   }
+`;
+
+const Line = styled.span`
+  position: absolute;
+  top: ${(props) => props.position === "right" && "-15%"};
+  right: ${(props) => props.position === "right" && 0};
+  left: ${(props) => {
+    if (props.position === "left") return 0;
+    if (props.position === "bottom") return "-15%";
+  }};
+  bottom: ${(props) => {
+    if (props.position === "left") return "-15%";
+    if (props.position === "bottom") return 0;
+  }};
+  width: ${(props) => (props.position === "bottom" ? "70%" : "1px")};
+  height: ${(props) => (props.position === "bottom" ? "1px" : "70%")};
+  background: ${(props) => `
+    linear-gradient(${props.position === "bottom" ? "to left" : "to bottom"},
+    transparent 0%,
+    ${props.theme.line_secondary} 25%,
+    ${props.theme.line_primary} 50%,
+    transparent 100%)
+  `};
 `;

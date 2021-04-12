@@ -10,6 +10,7 @@ function Cursor({ state }) {
   let mouseY = 0;
   let xp = 0;
   let yp = 0;
+  let raf;
 
   const onMouseMove = (e) => {
     mouseX = e.pageX;
@@ -24,19 +25,23 @@ function Cursor({ state }) {
       document.documentElement.scrollTop || document.body.scrollTop;
   };
 
+  const move = () => {
+    xp += (mouseX - xp) / 6;
+    yp += (mouseY - yp) / 6;
+    circleRef.current.style.top = `${yp}px`;
+    circleRef.current.style.left = `${xp}px`;
+    raf = window.requestAnimationFrame(move);
+  };
+
   useEffect(() => {
     document.addEventListener("mousemove", onMouseMove);
     document.addEventListener("scroll", onScroll);
-    setInterval(() => {
-      xp += (mouseX - xp) / 6;
-      yp += (mouseY - yp) / 6;
-      circleRef.current.style.top = `${yp}px`;
-      circleRef.current.style.left = `${xp}px`;
-    }, 20);
+    raf = window.requestAnimationFrame(move);
 
     return () => {
       document.removeEventListener("mousemove", onMouseMove);
       document.addEventListener("scroll", onScroll);
+      window.cancelAnimationFrame(raf);
     };
   }, []);
 
