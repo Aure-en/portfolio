@@ -19,7 +19,7 @@ export function CursorProvider({ children }) {
   return (
     <CursorContext.Provider value={value}>
       <Container>
-        <Cursor state={state} />
+        {/* <Cursor state={state} /> */}
         {children}
       </Container>
     </CursorContext.Provider>

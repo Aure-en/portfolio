@@ -29,6 +29,7 @@ const Button = styled.button`
   font-size: 1.125rem;
   padding: 1rem;
   cursor: pointer;
+  color: ${(props) => props.theme.text_primary};
 
   &:focus {
     outline: 1px solid transparent;

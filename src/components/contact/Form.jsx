@@ -127,6 +127,8 @@ const Input = styled.input`
     ${(props) => (props.$hasError ? props.theme.error : props.theme.border)};
   padding: 0.5rem 0 0.25rem 0;
   width: 100%;
+  background: ${(props) => props.theme.background};
+  color: ${(props) => props.theme.text_primary};
 
   &::placeholder {
     color: ${(props) => props.theme.border};
@@ -144,6 +146,8 @@ const Textarea = styled(TextareaAutosize)`
     ${(props) => (props.$hasError ? props.theme.error : props.theme.border)};
   padding: 0.5rem 0 0.25rem 0;
   width: 100%;
+  background: ${(props) => props.theme.background};
+  color: ${(props) => props.theme.text_primary};
 
   &::placeholder {
     color: ${(props) => props.theme.border};

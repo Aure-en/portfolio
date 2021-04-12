@@ -37,6 +37,7 @@ const Button = styled.button`
   overflow: hidden;
   font-weight: 300;
   cursor: pointer;
+  color: ${(props) => props.theme.text_primary};
 
   &:focus {
     outline: 1px solid transparent;
