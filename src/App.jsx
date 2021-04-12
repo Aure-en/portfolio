@@ -8,7 +8,7 @@ import Pages from "./components/Pages";
 import Header from "./components/header/Header";
 import About from "./components/About";
 import Projects from "./components/projects/Projects";
-import Contact from "./components/Contact";
+import Contact from "./components/contact/Contact";
 import GlobalStyles from "./styles/globalStyles";
 import projects from "./content/projects.json";
 import "normalize.css";
