@@ -80,7 +80,7 @@ function Diagonal() {
     };
     raf = window.requestAnimationFrame(animate);
     return () => window.cancelAnimationFrame(raf);
-  }, [windowSize]);
+  }, [windowSize, theme]);
 
   return <Canvas ref={canvasRef} />;
 }

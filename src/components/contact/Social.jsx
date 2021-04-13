@@ -32,12 +32,18 @@ function Social() {
 export default Social;
 
 const Container = styled.div`
-  position: absolute;
-  bottom: -2.5rem;
-  left: 1rem;
   color: ${(props) => props.theme.text_secondary};
   display: flex;
   align-items: center;
+  margin-top: 1rem;
+  text-align: center;
+
+  @media all and (min-width: 576px) {
+    position: absolute;
+    bottom: -2.5rem;
+    left: 1rem;
+    margin-top: 0;
+  }
 
   & > span {
     text-transform: uppercase;

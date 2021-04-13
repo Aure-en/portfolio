@@ -2,8 +2,7 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 import { useCursor } from "../../contexts/CursorContext";
 import { useSection } from "../../contexts/SectionContext";
-import Language from "./switch/Language";
-import Theme from "./switch/Theme";
+import Dropdown from "./switch/Dropdown";
 import Line from "./Line";
 
 function Header() {
@@ -48,9 +47,10 @@ function Header() {
         >
           Contact
         </Link>
-        <Theme />
-        <Language />
       </Container>
+      <Buttons>
+        <Dropdown />
+      </Buttons>
       <Line
         prev={
           prev === 0
@@ -77,7 +77,7 @@ const Wrapper = styled.header`
   position: fixed;
   top: 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   width: 100vw;
   max-width: 100%;
   color: ${(props) => props.theme.text_primary};
@@ -92,12 +92,13 @@ const Wrapper = styled.header`
 
 const Container = styled.nav`
   display: flex;
+  align-items: center;
 
   & > a {
     text-transform: uppercase;
     font-weight: 300;
     font-size: 1.125rem;
-    padding: 1rem;
+    padding: 1rem 0.5rem;
   }
 `;
 
@@ -107,4 +108,9 @@ const Link = styled.a`
   &:hover {
     color: ${(props) => props.theme.text_secondary};
   }
+`;
+
+const Buttons = styled.div`
+  display: flex;
+  align-items: center;
 `;

@@ -4,6 +4,7 @@ import { LanguageProvider } from "./contexts/LanguageContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { CursorProvider } from "./contexts/CursorContext";
 import { SectionProvider } from "./contexts/SectionContext";
+import useWindowSize from "./hooks/useWindowSize";
 import Pages from "./components/Pages";
 import Header from "./components/header/Header";
 import About from "./components/About";
@@ -19,6 +20,7 @@ sections.unshift("about");
 sections.push("contact");
 
 function App() {
+  const { windowSize } = useWindowSize();
   return (
     <LanguageProvider>
       <ThemeProvider>
@@ -27,10 +29,10 @@ function App() {
             <Container>
               <GlobalStyles />
               <Header />
-              <Pages />
               <About />
               <Projects />
               <Contact />
+              {windowSize.width > 1200 && <Pages />}
             </Container>
           </SectionProvider>
         </CursorProvider>

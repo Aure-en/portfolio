@@ -50,7 +50,7 @@ function Border({ element, radius }) {
       raf = window.requestAnimationFrame(draw);
     };
     raf = window.requestAnimationFrame(draw);
-  }, [windowSize]);
+  }, [windowSize, theme]);
 
   const updatePosition = (e) => {
     mouseRef.current = { mouseX: e.clientX, mouseY: e.clientY };

@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
 import { useLanguage } from "../contexts/LanguageContext";
+import useWindowSize from "../hooks/useWindowSize";
 import Particles from "./canvas/background/Particles";
 import Border from "./canvas/Border";
 import View from "./shared/links/View";
@@ -10,6 +11,7 @@ import { ReactComponent as IconDown } from "../assets/icons/chevron-down.svg";
 function About() {
   const { language } = useLanguage();
   const ref = useRef();
+  const { windowSize } = useWindowSize();
 
   return (
     <Wrapper id="about">
@@ -30,8 +32,8 @@ function About() {
           {content[language].link} <IconDown />
         </View>
       </Container>
-      <Border element={ref} radius={250} />
-      <Particles />
+      {windowSize.width > 768 && <Border element={ref} radius={250} />}
+      {windowSize.width > 768 && <Particles />}
     </Wrapper>
   );
 }
@@ -39,23 +41,32 @@ function About() {
 export default About;
 
 const Wrapper = styled.div`
-  width: 100vw;
-  min-height: 100vh;
-  max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 2rem;
+
+  @media all and (min-width: 576px) {
+    width: 100vw;
+    min-height: 100vh;
+    max-width: 100%;
+    padding-top: 0;
+  }
 `;
 
 const Container = styled.main`
   display: flex;
   flex-direction: column;
-  padding: 3rem 5rem;
   width: 100vw;
   max-width: 50rem;
+  padding: 1rem;
   z-index: 2;
   background: ${(props) => props.theme.background};
-  border: 1px solid ${(props) => props.theme.border};
+
+  @media all and (min-width: 576px) {
+    padding: 3rem 5rem;
+    border: 1px solid ${(props) => props.theme.border};
+  }
 `;
 
 const Text = styled.div``;

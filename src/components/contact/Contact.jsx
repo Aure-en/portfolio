@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useLanguage } from "../../contexts/LanguageContext";
+import useWindowSize from "../../hooks/useWindowSize";
 import Form from "./Form";
 import Social from "./Social";
 import Diagonal from "../canvas/background/Diagonal";
@@ -12,6 +13,7 @@ import { ReactComponent as IconSend } from "../../assets/icons/send.svg";
 
 function Contact() {
   const { language } = useLanguage();
+  const { windowSize } = useWindowSize();
 
   return (
     <Wrapper id="contact">
@@ -24,13 +26,21 @@ function Contact() {
         </Header>
         <Text>{contact[language].message}</Text>
         <Form />
-        <Line position="left" />
-        <Line position="right" />
-        <Line position="bottom" />
+        {windowSize.width > 768 && (
+          <>
+            <Line position="left" />
+            <Line position="right" />
+            <Line position="bottom" />
+          </>
+        )}
         <Social />
       </Container>
-      <Diagonal />
-      <Transition />
+      {windowSize.width > 768 && (
+        <>
+          <Diagonal />
+          <Transition />
+        </>
+      )}
     </Wrapper>
   );
 }
@@ -39,12 +49,17 @@ export default Contact;
 
 const Wrapper = styled.div`
   position: relative;
-  width: 100vw;
-  min-height: 100vh;
-  max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 2rem 0;
+
+  @media all and (min-width: 576px) {
+    width: 100vw;
+    min-height: 100vh;
+    max-width: 100%;
+    padding-top: 0;
+  }
 `;
 
 const Container = styled.div`
@@ -53,10 +68,14 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100vw;
-  padding: 5rem 10rem;
   max-width: 45rem;
   background: ${(props) => props.theme.background};
   z-index: 2;
+  padding: 1rem 2rem;
+
+  @media all and (min-width: 576px) {
+    padding: 5rem 10rem;
+  }
 `;
 
 const Header = styled.div`
@@ -69,18 +88,27 @@ const Title = styled.h2`
   left: -2rem;
   font-family: "Playfair Display", "Source Sans Pro", "Open Sans",
     "Trebuchet MS", "Verdana", sans-serif;
-  font-size: 5rem;
+  font-size: 3rem;
   line-height: 5rem;
   margin: 0 0 2rem 0;
   font-weight: 400;
+
+  @media all and (min-width: 576px) {
+    font-size: 5rem;
+  }
 `;
 
 const Icon = styled.span`
   display: flex;
   align-items: center;
   position: absolute;
-  bottom: -1.125rem;
-  right: -5rem;
+  bottom: 0;
+  right: -1rem;
+
+  @media all and (min-width: 576px) {
+    bottom: -1.125rem;
+    right: -5rem;
+  }
 
   &:before {
     content: "";
@@ -95,9 +123,12 @@ const Icon = styled.span`
 const Text = styled.p`
   position: relative;
   text-indent: 0;
-  max-width: 16rem;
-  margin: 2rem 0;
-  left: 3rem;
+
+  @media all and (min-width: 576px) {
+    max-width: 16rem;
+    margin: 2rem 0;
+    left: 3rem;
+  }
 `;
 
 const Line = styled.span`

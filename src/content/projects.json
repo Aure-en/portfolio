@@ -25,9 +25,10 @@
     "view": "https://room-f191c.web.app/",
     "visuals": [
       "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Froom%2Froom1.png?alt=media&token=d44ade1d-70d0-4346-9b77-7f50680ecf1c",
-      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Froom%2Froom2.png?alt=media&token=f877be94-7f23-4d61-933c-761f7ae7ea53",
+      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Froom%2Froom2.png?alt=media&token=6792bc39-36f9-4ba1-aa5b-506eafc9ed6f",
       "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Froom%2Froom3.png?alt=media&token=68b9047c-2923-4752-b769-2a241ba7fd91"
     ],
+    "mobile": "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Froom%2Froom-mobile.png?alt=media&token=ee3699e6-22a0-4533-b8ea-2f3a4922c72a",
     "hasDarkMode": false
   },
 
@@ -65,6 +66,7 @@
         "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fbreadit3D.png?alt=media&token=8fc18f90-53be-4408-aaa4-7d3077933b22"
       ]
     },
+    "mobile": "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fbreadit_mobile.png?alt=media&token=a8c2916b-3da4-424e-b4bb-d1f366e4947f",
     "hasDarkMode": true
   }
 ]

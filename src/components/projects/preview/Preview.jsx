@@ -51,6 +51,10 @@ export default React.memo(Preview);
 const Container = styled.div`
   display: flex;
   position: relative;
+
+  @media all and (min-width: 992px) {
+    grid-row: 1 / -1;
+  }
 `;
 
 Preview.propTypes = {

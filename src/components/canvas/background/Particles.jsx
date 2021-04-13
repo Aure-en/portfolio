@@ -95,7 +95,8 @@ function Particles() {
     };
     raf = window.requestAnimationFrame(animate);
     return () => window.cancelAnimationFrame(raf);
-  }, [windowSize]);
+  }, [windowSize, theme]);
+  // Redraw on resize and when the theme changes (otherwise, colors won't update).
 
   const updatePosition = (e) => {
     mouseRef.current = { mouseX: e.clientX, mouseY: e.clientY };

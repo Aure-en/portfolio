@@ -27,9 +27,15 @@ const Button = styled.button`
   text-transform: uppercase;
   font-weight: 300;
   font-size: 1.125rem;
-  padding: 1rem;
+  color: ${(props) => props.theme.text_secondary};
+  padding: 0;
   cursor: pointer;
-  color: ${(props) => props.theme.text_primary};
+  width: 100%;
+  height: 100%;
+
+  &:hover {
+    color: ${(props) => props.theme.text_primary};
+  }
 
   &:focus {
     outline: 1px solid transparent;
