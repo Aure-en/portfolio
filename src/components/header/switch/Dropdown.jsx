@@ -16,6 +16,7 @@ function Dropdown() {
         type="button"
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         $isDropdownOpen={isDropdownOpen}
+        aria-label="settings"
       >
         <CaretDown />
       </Header>

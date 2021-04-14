@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { useLanguage } from "../../contexts/LanguageContext";
+import { useSection } from "../../contexts/SectionContext";
 import useWindowSize from "../../hooks/useWindowSize";
+import Title from "../sections/Title";
+import Line from "../sections/Line";
 import Form from "./Form";
 import Social from "./Social";
 import Diagonal from "../canvas/background/Diagonal";
@@ -14,23 +17,24 @@ import { ReactComponent as IconSend } from "../../assets/icons/send.svg";
 function Contact() {
   const { language } = useLanguage();
   const { windowSize } = useWindowSize();
+  const { name } = useSection();
 
   return (
     <Wrapper id="contact">
       <Container>
         <Header>
-          <Title>Contact</Title>
-          <Icon>
+          <Title transition={name === "contact"} title="Contact" />
+          <Line transition={name === "contact"}>
             <IconSend />
-          </Icon>
+          </Line>
         </Header>
         <Text>{contact[language].message}</Text>
         <Form />
         {windowSize.width > 768 && (
           <>
-            <Line position="left" />
-            <Line position="right" />
-            <Line position="bottom" />
+            <Border position="left" />
+            <Border position="right" />
+            <Border position="bottom" />
           </>
         )}
         <Social />
@@ -57,9 +61,11 @@ const Wrapper = styled.div`
 
   @media all and (min-width: 576px) {
     width: 100vw;
-    height: 100vh;
     max-width: 100%;
-    padding-top: 0;
+  }
+
+  @media all and (min-width: 992px) {
+    height: 100vh;
   }
 `;
 
@@ -82,21 +88,6 @@ const Container = styled.div`
 const Header = styled.div`
   display: inline-block;
   position: relative;
-`;
-
-const Title = styled.h2`
-  position: relative;
-  left: -2rem;
-  font-family: "Playfair Display", "Source Sans Pro", "Open Sans",
-    "Trebuchet MS", "Verdana", sans-serif;
-  font-size: 3rem;
-  line-height: 5rem;
-  margin: 0 0 2rem 0;
-  font-weight: 400;
-
-  @media all and (min-width: 576px) {
-    font-size: 5rem;
-  }
 `;
 
 const Icon = styled.span`
@@ -132,7 +123,7 @@ const Text = styled.p`
   }
 `;
 
-const Line = styled.span`
+const Border = styled.span`
   position: absolute;
   top: ${(props) => props.position === "right" && "-15%"};
   right: ${(props) => props.position === "right" && 0};

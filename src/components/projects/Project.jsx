@@ -2,15 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { useLanguage } from "../../contexts/LanguageContext";
-import { useCursor } from "../../contexts/CursorContext";
+import { useSection } from "../../contexts/SectionContext";
 import useWindowSize from "../../hooks/useWindowSize";
 import Preview from "./preview/Preview";
+import Title from "./Title";
+import Line from "../sections/Line";
 import Link from "../shared/links/Link";
 
 function Project({ project }) {
-  const { setState } = useCursor();
   const { language } = useLanguage();
   const { windowSize } = useWindowSize();
+  const { name } = useSection();
 
   return (
     <Wrapper id={`project-${project.id}`}>
@@ -24,15 +26,15 @@ function Project({ project }) {
 
         <Header>
           <Title
-            onMouseEnter={() => setState("hidden")}
-            onMouseLeave={() => setState("basic")}
-          >
-            <a href={project.view}>{project.title}</a>
-          </Title>
-          <Number>
+            transition={name === `project-${project.id}`}
+            title={project.title}
+            link={project.view}
+          />
+          <Line transition={name === `project-${project.id}`}>
+            {" "}
             {project.id < 10 && "0"}
             {project.id}
-          </Number>
+          </Line>
         </Header>
 
         {windowSize.width < 768 && (
@@ -75,12 +77,11 @@ const Wrapper = styled.div`
 
   @media all and (min-width: 576px) {
     width: 100vw;
-    height: 100vh;
     max-width: 100%;
   }
 
-  @media all and (min-width: 768px) {
-    padding-top: 0;
+  @media all and (min-width: 992px) {
+    height: 100vh;
   }
 `;
 
@@ -107,44 +108,6 @@ const Header = styled.div`
     grid-column: 2;
     justify-self: start;
     left: 5rem;
-  }
-`;
-
-const Title = styled.h2`
-  position: relative;
-  font-family: "Playfair Display", "Source Sans Pro", "Open Sans",
-    "Trebuchet MS", "Verdana", sans-serif;
-  font-size: 3rem;
-  line-height: 4rem;
-  margin: 0 0 2rem 0;
-  font-weight: 400;
-
-  @media all and (min-width: 576px) {
-    font-size: 5rem;
-  }
-`;
-
-const Number = styled.span`
-  display: flex;
-  align-items: center;
-  font-family: "Playfair Display", "Source Sans Pro", "Open Sans",
-    "Trebuchet MS", "Verdana", sans-serif;
-  font-size: 1.125rem;
-  position: absolute;
-  bottom: 0;
-  right: -5rem;
-
-  @media all and (min-width: 576px) {
-    right: -5rem;
-  }
-
-  &:before {
-    content: "";
-    display: inline-block;
-    width: 5rem;
-    height: 1px;
-    background: ${(props) => props.theme.text_primary};
-    margin-right: 1rem;
   }
 `;
 

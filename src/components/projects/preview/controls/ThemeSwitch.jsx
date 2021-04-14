@@ -14,6 +14,9 @@ function ThemeSwitch({ theme, switchTheme }) {
       onClick={switchTheme}
       onMouseEnter={() => setState("hidden")}
       onMouseLeave={() => setState("basic")}
+      aria-label={`Switch preview to ${
+        theme === "light" ? "dark" : "light"
+      } mode`}
     >
       {theme === "light" ? <IconLight /> : <IconDark />}
     </Switch>

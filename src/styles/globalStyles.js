@@ -8,6 +8,7 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     cursor: url(${cursor}), auto;
     scroll-behavior: smooth;
+    font-display: optional;
   }
 
   body {

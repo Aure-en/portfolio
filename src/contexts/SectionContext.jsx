@@ -17,6 +17,7 @@ export function useSection() {
 export function SectionProvider({ sections, children }) {
   const current = Number(sessionStorage.getItem("section"));
   const [section, setSection] = useState(current || 0);
+  const [name, setName] = useState(sections[section]);
   const [positions, setPositions] = useState([]);
   const { windowSize } = useWindowSize();
 
@@ -31,6 +32,7 @@ export function SectionProvider({ sections, children }) {
     sectionRef.current = section;
     sessionStorage.setItem("section", section);
     setSection(section);
+    setName(sections[section]);
   };
 
   const move = (section) => {
@@ -124,6 +126,7 @@ export function SectionProvider({ sections, children }) {
   }, []);
 
   const value = {
+    name,
     section,
     sections,
   };

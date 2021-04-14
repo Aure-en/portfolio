@@ -2,11 +2,13 @@ import React, { useEffect, useRef, useContext } from "react";
 import PropTypes from "prop-types";
 import styled, { ThemeContext } from "styled-components";
 import useWindowSize from "../../hooks/useWindowSize";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 function Border({ element, radius }) {
   const canvasRef = useRef();
   const theme = useContext(ThemeContext);
   const { windowSize } = useWindowSize();
+  const { language } = useLanguage();
   const mouseRef = useRef();
   mouseRef.current = { mouseX: 0, mouseY: 0 };
   let raf;
@@ -50,7 +52,13 @@ function Border({ element, radius }) {
       raf = window.requestAnimationFrame(draw);
     };
     raf = window.requestAnimationFrame(draw);
-  }, [windowSize, theme]);
+  }, [windowSize, theme, language]);
+
+  /* Updates on:
+  - Window resize (element's height / width changes)
+  - Theme (updates the color)
+  - Language (changing the text modifies the element's height)
+  */
 
   const updatePosition = (e) => {
     mouseRef.current = { mouseX: e.clientX, mouseY: e.clientY };

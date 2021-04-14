@@ -15,12 +15,12 @@ function Social() {
       <span>{contact[language].social}</span>
       <List>
         <li>
-          <a href={`mailto:${contact.links.mail}`}>
+          <a href={`mailto:${contact.links.mail}`} title="Send a mail">
             <IconMail />
           </a>
         </li>
         <li>
-          <a href={contact.links.github}>
+          <a href={contact.links.github} title="Github Profile">
             <IconGithub />
           </a>
         </li>
@@ -40,13 +40,14 @@ const Container = styled.div`
 
   @media all and (min-width: 576px) {
     position: absolute;
-    bottom: -2.5rem;
+    bottom: 0;
     left: 5rem;
     margin-top: 0;
   }
 
-  @media all and (min-width: 768px) {
+  @media all and (min-width: 992px) {
     left: 1rem;
+    bottom: -2.5rem;
   }
 
   & > span {

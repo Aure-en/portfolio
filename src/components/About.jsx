@@ -65,6 +65,9 @@ const Container = styled.main`
 
   @media all and (min-width: 576px) {
     padding: 3rem 5rem;
+  }
+
+  @media all and (min-width: 50rem) {
     border: 1px solid ${(props) => props.theme.border};
   }
 `;

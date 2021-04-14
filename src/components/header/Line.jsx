@@ -2,14 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-function Line({ prev, current }) {
-  return (
-    <>
-      {current && current.current && (
-        <Container prev={prev} current={current} />
-      )}
-    </>
-  );
+function Line({ current }) {
+  return <>{current && current.current && <Container current={current} />}</>;
 }
 
 export default Line;

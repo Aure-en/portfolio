@@ -7,7 +7,7 @@ import Line from "./Line";
 
 function Header() {
   const { setState } = useCursor();
-  const { prev, section, sections } = useSection();
+  const { section, name, sections } = useSection();
 
   // To create the decorative line under the elements.
   const aboutRef = useRef();
@@ -21,7 +21,7 @@ function Header() {
           href="#about"
           onMouseEnter={() => setState("hidden")}
           onMouseLeave={() => setState("basic")}
-          isActive={sections[section] === "about"}
+          isActive={name === "about"}
           ref={aboutRef}
         >
           About
@@ -30,7 +30,7 @@ function Header() {
           href="#project-1"
           onMouseEnter={() => setState("hidden")}
           onMouseLeave={() => setState("basic")}
-          isActive={sections[section].includes("project")}
+          isActive={name.includes("project")}
           ref={projectsRef}
         >
           Projects
@@ -39,7 +39,7 @@ function Header() {
           href="#contact"
           onMouseEnter={() => setState("hidden")}
           onMouseLeave={() => setState("basic")}
-          isActive={sections[section] === "contact"}
+          isActive={name === "contact"}
           ref={contactRef}
         >
           Contact
@@ -49,13 +49,6 @@ function Header() {
         <Dropdown />
       </Buttons>
       <Line
-        prev={
-          prev === 0
-            ? aboutRef
-            : prev === sections.length - 1
-            ? contactRef
-            : projectsRef
-        }
         current={
           section === 0
             ? aboutRef

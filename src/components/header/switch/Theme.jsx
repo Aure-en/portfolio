@@ -17,6 +17,9 @@ function Theme() {
       onClick={changeTheme}
       onMouseEnter={() => setState("hidden")}
       onMouseLeave={() => setState("basic")}
+      aria-label={`change theme to ${
+        theme === "light" ? "dark mode" : "light mode"
+      }`}
     >
       {theme === "light" ? <IconDark /> : <IconLight />}
     </Button>

@@ -13,6 +13,7 @@ function Language() {
       onClick={changeLanguage}
       onMouseEnter={() => setState("hidden")}
       onMouseLeave={() => setState("basic")}
+      aria-label={`change language to ${language === "en" ? "fr" : "en"}`}
     >
       {language === "en" ? "fr" : "en"}
     </Button>
