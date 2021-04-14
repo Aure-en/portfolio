@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { useLanguage } from "../contexts/LanguageContext";
 import useWindowSize from "../hooks/useWindowSize";
@@ -9,9 +9,12 @@ import content from "../content/about.json";
 import { ReactComponent as IconDown } from "../assets/icons/chevron-down.svg";
 
 function About() {
+  const [font, setFont] = useState(false);
   const { language } = useLanguage();
   const ref = useRef();
   const { windowSize } = useWindowSize();
+
+  document.fonts.ready.then(() => setFont(true));
 
   return (
     <Wrapper id="about">
@@ -32,7 +35,7 @@ function About() {
           {content[language].link} <IconDown />
         </View>
       </Container>
-      {windowSize.width > 768 && <Border element={ref} radius={250} />}
+      {windowSize.width > 768 && font && <Border element={ref} radius={250} />}
       {windowSize.width > 768 && <Particles />}
     </Wrapper>
   );
