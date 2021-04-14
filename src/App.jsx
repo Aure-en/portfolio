@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -21,6 +21,7 @@ sections.push("contact");
 
 function App() {
   const { windowSize } = useWindowSize();
+
   return (
     <LanguageProvider>
       <ThemeProvider>

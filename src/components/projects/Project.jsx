@@ -75,8 +75,11 @@ const Wrapper = styled.div`
 
   @media all and (min-width: 576px) {
     width: 100vw;
-    min-height: 100vh;
+    height: 100vh;
     max-width: 100%;
+  }
+
+  @media all and (min-width: 768px) {
     padding-top: 0;
   }
 `;

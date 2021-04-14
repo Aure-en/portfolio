@@ -2,16 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { useCursor } from "../../../contexts/CursorContext";
-import { useSection } from "../../../contexts/SectionContext";
 
 function View({ children }) {
   const { setState } = useCursor();
-  const { link } = useSection();
 
   return (
     <Link
       href="#project-1"
-      onClick={() => link("project-1")}
       onMouseEnter={() => setState("hidden")}
       onMouseLeave={() => setState("basic")}
     >

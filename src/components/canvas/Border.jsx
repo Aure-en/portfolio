@@ -71,13 +71,14 @@ export default Border;
 
 Border.propTypes = {
   element: PropTypes.shape({
-    current: PropTypes.node,
-  }).isRequired,
+    current: PropTypes.instanceOf(Element),
+  }),
   radius: PropTypes.number,
 };
 
 Border.defaultProps = {
   radius: 300,
+  element: { current: undefined },
 };
 
 const Canvas = styled.canvas`

@@ -53,10 +53,11 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   padding: 2rem 0;
+  overflow: hidden; // Without it, the Diagonal canvas causes the scroll to be weird on refresh.
 
   @media all and (min-width: 576px) {
     width: 100vw;
-    min-height: 100vh;
+    height: 100vh;
     max-width: 100%;
     padding-top: 0;
   }

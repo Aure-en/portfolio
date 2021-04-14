@@ -8,7 +8,6 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     cursor: url(${cursor}), auto;
     scroll-behavior: smooth;
-    overflow-anchor: none;
   }
 
   body {

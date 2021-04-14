@@ -41,8 +41,12 @@ const Container = styled.div`
   @media all and (min-width: 576px) {
     position: absolute;
     bottom: -2.5rem;
-    left: 1rem;
+    left: 5rem;
     margin-top: 0;
+  }
+
+  @media all and (min-width: 768px) {
+    left: 1rem;
   }
 
   & > span {

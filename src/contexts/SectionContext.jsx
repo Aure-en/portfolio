@@ -6,6 +6,7 @@ import React, {
   useRef,
 } from "react";
 import PropTypes from "prop-types";
+import useWindowSize from "../hooks/useWindowSize";
 
 const SectionContext = createContext();
 
@@ -14,8 +15,10 @@ export function useSection() {
 }
 
 export function SectionProvider({ sections, children }) {
-  const current = Number(localStorage.getItem("section"));
+  const current = Number(sessionStorage.getItem("section"));
   const [section, setSection] = useState(current || 0);
+  const [positions, setPositions] = useState([]);
+  const { windowSize } = useWindowSize();
 
   /* Without ref, the event listener only has access to the initial section state.
    It will always think that section is equal to current || 0, even if we update it.
@@ -26,18 +29,12 @@ export function SectionProvider({ sections, children }) {
 
   const updateSection = (section) => {
     sectionRef.current = section;
-    localStorage.setItem("section", section);
+    sessionStorage.setItem("section", section);
     setSection(section);
-  };
-
-  const link = (href) => {
-    const number = sections.findIndex((section) => section === href);
-    updateSection(number);
   };
 
   const move = (section) => {
     document.querySelector(`#${sections[section]}`).scrollIntoView();
-    updateSection(section);
   };
 
   let delaying = false; // Prevents the user from scrolling many times at once.
@@ -70,19 +67,65 @@ export function SectionProvider({ sections, children }) {
     }
   };
 
+  const onScroll = () => {
+    const scrollPosition =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    for (let i = 0; i < positions.length; i += 1) {
+      if (
+        positions[i].top <= scrollPosition &&
+        scrollPosition < positions[i].bottom
+      ) {
+        updateSection(i);
+        return;
+      }
+    }
+  };
+
+  // Sets up events listener
   useEffect(() => {
-    window.addEventListener("wheel", onMouseWheel, { passive: false });
-    window.addEventListener("keydown", onKeyDown, { passive: false });
+    window.addEventListener("scroll", onScroll);
+    if (windowSize.width < 992) {
+      document.body.style.overflow = "auto";
+    } else {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("wheel", onMouseWheel, { passive: false });
+      window.addEventListener("keydown", onKeyDown, { passive: false });
+      move(sectionRef.current);
+    }
     return () => {
       window.removeEventListener("wheel", onMouseWheel);
       window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("scroll", onScroll);
     };
+  }, [windowSize]);
+  // On small screens, go back to the usual scroll system.
+
+  /* Sets up scroll spying:
+     Calculate the coordinates of the sections to update the current section
+     when a new section comes into view.
+  */
+  useEffect(() => {
+    const scrollPosition =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    const sectionsElem = [];
+    sections.forEach((section) => {
+      const sectionElem = document.querySelector(`#${section}`);
+      sectionsElem.push(sectionElem);
+    });
+    const positions = [];
+    sectionsElem.forEach((section) => {
+      const position = {
+        bottom: section.getBoundingClientRect().bottom + scrollPosition,
+        top: section.getBoundingClientRect().top + scrollPosition,
+      };
+      positions.push(position);
+    });
+    setPositions(positions);
   }, []);
 
   const value = {
     section,
     sections,
-    link,
   };
 
   return (
