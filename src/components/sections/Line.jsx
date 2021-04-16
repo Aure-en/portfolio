@@ -31,7 +31,7 @@ const Container = styled.span`
   font-size: 1.125rem;
   position: absolute;
   bottom: 0;
-  right: -5rem;
+  right: -3rem;
 
   @media all and (min-width: 576px) {
     right: -5rem;

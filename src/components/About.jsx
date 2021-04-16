@@ -20,11 +20,11 @@ function About() {
     <Wrapper id="about">
       <Container ref={ref}>
         <Title>{content[language].title}</Title>
-        <Text>
+        <div>
           {content[language].text.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
-        </Text>
+        </div>
         <Interest>{content[language].interests.introduction}</Interest>
         <ul>
           {content[language].interests.list.map((interest) => (
@@ -75,8 +75,6 @@ const Container = styled.main`
   }
 `;
 
-const Text = styled.div``;
-
 const Title = styled.h1`
   font-family: "Playfair Display", "Source Sans Pro", "Open Sans",
     "Trebuchet MS", "Verdana", sans-serif;
@@ -85,7 +83,7 @@ const Title = styled.h1`
   margin-bottom: 2rem;
 `;
 
-const Interest = styled.h3`
+const Interest = styled.div`
   font-family: "Playfair Display", "Source Sans Pro", "Open Sans",
     "Trebuchet MS", "Verdana", sans-serif;
   font-weight: 300;

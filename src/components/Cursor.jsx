@@ -98,7 +98,7 @@ const Circle = styled.span`
   }};
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  border: 1px solid grey;
+  border: 1px solid ${(props) => props.theme.cursor_circle};
   pointer-events: none;
   z-index: 999;
   transition: height, width 0.1s ease-out;
@@ -106,7 +106,7 @@ const Circle = styled.span`
   &:before {
     ${caret};
     ${(props) => props.state === "scroll" && 'content: ""'};
-    border-bottom: 4px solid ${(props) => props.theme.cursor};
+    border-bottom: 4px solid ${(props) => props.theme.cursor_caret};
     border-top: 4px solid transparent;
     top: -35%;
   }
@@ -114,7 +114,7 @@ const Circle = styled.span`
   &:after {
     ${caret}
     ${(props) => props.state === "scroll" && 'content: ""'};
-    border-top: 4px solid ${(props) => props.theme.cursor};
+    border-top: 4px solid ${(props) => props.theme.cursor_caret};
     border-bottom: 4px solid transparent;
     bottom: -35%;
   }

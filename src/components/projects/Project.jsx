@@ -12,7 +12,7 @@ import Link from "../shared/links/Link";
 function Project({ project }) {
   const { language } = useLanguage();
   const { windowSize } = useWindowSize();
-  const { name } = useSection();
+  const { section, name } = useSection();
 
   return (
     <Wrapper id={`project-${project.id}`}>
@@ -25,11 +25,19 @@ function Project({ project }) {
         )}
 
         <Header>
-          <Title
-            transition={name === `project-${project.id}`}
-            title={project.title}
-            link={project.view}
-          />
+          {windowSize.width > 992 ? (
+            <Title
+              transition={name === `project-${project.id}`}
+              title={project.title}
+              link={project.view}
+            />
+          ) : (
+            <Title
+              transition={section >= project.id}
+              title={project.title}
+              link={project.view}
+            />
+          )}
           <Line transition={name === `project-${project.id}`}>
             {" "}
             {project.id < 10 && "0"}
@@ -73,7 +81,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 3rem;
+  padding-bottom: 3rem;
 
   @media all and (min-width: 576px) {
     width: 100vw;
@@ -137,7 +145,6 @@ const StackList = styled.ul`
 `;
 
 const Stack = styled.li`
-  font-size: 0.875rem;
   margin: 0 0.5rem;
 `;
 

@@ -56,7 +56,6 @@ const Message = styled.span`
   top: 9.5rem;
   left: -1.5rem;
   letter-spacing: 1px;
-  font-size: 0.9375rem;
   background: ${(props) => props.theme.progress};
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;

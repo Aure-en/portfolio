@@ -74,8 +74,8 @@ export function SectionProvider({ sections, children }) {
       document.documentElement.scrollTop || document.body.scrollTop;
     for (let i = 0; i < positions.length; i += 1) {
       if (
-        positions[i].top <= scrollPosition &&
-        scrollPosition < positions[i].bottom
+        positions[i].top <= scrollPosition + window.innerHeight - 200 &&
+        scrollPosition + window.innerHeight - 200 < positions[i].bottom
       ) {
         updateSection(i);
         return;
@@ -123,7 +123,7 @@ export function SectionProvider({ sections, children }) {
       positions.push(position);
     });
     setPositions(positions);
-  }, []);
+  }, [windowSize]);
 
   const value = {
     name,

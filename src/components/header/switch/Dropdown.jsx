@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
 import useDropdown from "../../../hooks/useDropdown";
+import { useCursor } from "../../../contexts/CursorContext";
 import Theme from "./Theme";
 import Language from "./Language";
 
@@ -10,13 +11,20 @@ import { ReactComponent as CaretDown } from "../../../assets/icons/caret-down.sv
 function Dropdown() {
   const dropdownRef = useRef();
   const { isDropdownOpen, setIsDropdownOpen } = useDropdown(dropdownRef);
+  const { setState } = useCursor();
   return (
-    <Container ref={dropdownRef}>
+    <Container
+      ref={dropdownRef}
+      onMouseEnter={() => setState("hidden")}
+      onMouseLeave={() => setState("basic")}
+    >
       <Header
         type="button"
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         $isDropdownOpen={isDropdownOpen}
         aria-label="settings"
+        onMouseEnter={() => setState("hidden")}
+        onMouseLeave={() => setState("basic")}
       >
         <CaretDown />
       </Header>

@@ -1,6 +1,5 @@
 const colors = {
   background: "rgb(255, 255, 255)",
-  cursor: "rgb(0, 0, 0)",
 
   text_primary: "rgb(55, 55, 55)",
   text_secondary: "rgb(105, 105, 105)",
@@ -28,6 +27,9 @@ const colors = {
   preview_button_secondary: "rgb(175, 175, 175)",
   preview_button_tertiary: "rgb(100, 100, 100)",
   preview_button_active: "rgb(219, 178, 96)",
+
+  cursor_circle: "rgba(0, 0, 0, .5)",
+  cursor_caret: "rgba(0, 0, 0)",
 };
 
 export default colors;
