@@ -13,8 +13,8 @@ function Title({ transition, title, link }) {
       onMouseLeave={() => setState("basic")}
     >
       <a href={link}>
-        {title.split("").map((letter) => (
-          <Box>
+        {title.split("").map((letter, index) => (
+          <Box key={index}>
             <Transition in={transition} timeout={0}>
               {(state) => <Letter $state={state}>{letter}</Letter>}
             </Transition>

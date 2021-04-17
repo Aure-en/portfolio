@@ -14,7 +14,7 @@ function About() {
   const ref = useRef();
   const { windowSize } = useWindowSize();
 
-  document.fonts.ready.then(() => setFont(true));
+  // document.fonts.ready.then(() => setFont(true));
 
   return (
     <Wrapper id="about">

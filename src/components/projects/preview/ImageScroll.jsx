@@ -53,7 +53,7 @@ function ImageScroll({ number, src }) {
       >
         (Drag and scroll)
       </ProgressBar>
-      <Border element={containerRef} radius={150} />
+      {/* <Border element={containerRef} radius={150} /> */}
       <Container
         ref={containerRef}
         onMouseDown={onMouseDown}

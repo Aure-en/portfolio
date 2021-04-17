@@ -8,7 +8,7 @@ import React, {
 import PropTypes from "prop-types";
 import useWindowSize from "../hooks/useWindowSize";
 
-const SectionContext = createContext();
+export const SectionContext = createContext();
 
 export function useSection() {
   return useContext(SectionContext);

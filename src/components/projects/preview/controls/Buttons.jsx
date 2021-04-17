@@ -15,6 +15,7 @@ function Buttons({ images, imageNumber, setImageNumber }) {
           onMouseEnter={() => setState("hidden")}
           onMouseLeave={() => setState("basic")}
           aria-label={`preview image ${index + 1}`}
+          data-testid={`preview image ${index + 1}`}
         >
           <Square isSelected={imageNumber === index} index={index} />
         </Button>

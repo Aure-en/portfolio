@@ -10,7 +10,10 @@ function Language() {
   return (
     <Button
       type="button"
-      onClick={changeLanguage}
+      onClick={() => {
+        changeLanguage();
+        setState("basic");
+      }}
       onMouseEnter={() => setState("hidden")}
       onMouseLeave={() => setState("basic")}
       aria-label={`change language to ${language === "en" ? "fr" : "en"}`}

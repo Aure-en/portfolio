@@ -14,13 +14,13 @@ import GlobalStyles from "./styles/globalStyles";
 import projects from "./content/projects.json";
 import "normalize.css";
 
-const sections = [];
-projects.map((project, index) => sections.push(`project-${index + 1}`));
-sections.unshift("about");
-sections.push("contact");
-
 function App() {
   const { windowSize } = useWindowSize();
+
+  const sections = [];
+  projects.map((project, index) => sections.push(`project-${index + 1}`));
+  sections.unshift("about");
+  sections.push("contact");
 
   return (
     <LanguageProvider>

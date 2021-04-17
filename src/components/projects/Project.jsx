@@ -142,6 +142,7 @@ const StackList = styled.ul`
   flex-wrap: wrap;
   list-style-type: none;
   color: ${(props) => props.theme.text_accent};
+  font-size: 0.925rem;
 `;
 
 const Stack = styled.li`

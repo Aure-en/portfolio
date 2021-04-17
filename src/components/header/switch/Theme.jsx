@@ -14,7 +14,10 @@ function Theme() {
   return (
     <Button
       type="button"
-      onClick={changeTheme}
+      onClick={() => {
+        changeTheme();
+        setState("basic");
+      }}
       onMouseEnter={() => setState("hidden")}
       onMouseLeave={() => setState("basic")}
       aria-label={`change theme to ${

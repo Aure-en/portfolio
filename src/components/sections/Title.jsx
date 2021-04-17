@@ -11,8 +11,8 @@ function Title({ transition, title }) {
       onMouseEnter={() => setState("hidden")}
       onMouseLeave={() => setState("basic")}
     >
-      {title.split("").map((letter) => (
-        <Box>
+      {title.split("").map((letter, index) => (
+        <Box key={index}>
           <Transition in={transition} timeout={0}>
             {(state) => <Letter $state={state}>{letter}</Letter>}
           </Transition>

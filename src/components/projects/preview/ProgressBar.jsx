@@ -1,9 +1,12 @@
 import React, { useContext, useRef, useEffect } from "react";
 import styled, { ThemeContext } from "styled-components";
 import PropTypes from "prop-types";
+import { useLanguage } from "../../../contexts/LanguageContext";
+import text from "../../../content/progress.json";
 
 function ProgressBar({ isActive, container, content, number }) {
   const theme = useContext(ThemeContext);
+  const { language } = useLanguage();
   const ref = useRef();
 
   const calculateProgress = () => {
@@ -30,7 +33,7 @@ function ProgressBar({ isActive, container, content, number }) {
     return () => clearInterval(updateProgress);
   }, [isActive]);
 
-  return <Message ref={ref}>(Drag and scroll)</Message>;
+  return <Message ref={ref}>({text[language]})</Message>;
 }
 
 export default React.memo(ProgressBar);
@@ -50,11 +53,11 @@ ProgressBar.defaultProps = {
 
 const Message = styled.span`
   position: absolute;
-  transform: rotate(270deg);
+  transform: rotate(270deg) translateX(-100%);
   text-transform: uppercase;
   transform-origin: 0 0;
-  top: 9.5rem;
   left: -1.5rem;
+  bottom: 95%;
   letter-spacing: 1px;
   background: ${(props) => props.theme.progress};
   -webkit-background-clip: text !important;
