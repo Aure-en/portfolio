@@ -1,4 +1,5 @@
 import React, { useContext, createContext, useState } from "react";
+import PropTypes from "prop-types";
 
 const LanguageContext = createContext();
 
@@ -7,8 +8,15 @@ export function useLanguage() {
 }
 
 export function LanguageProvider({ children }) {
-  const current = localStorage.getItem("language");
-  const [language, setLanguage] = useState(current || "en");
+  // Checks the saved language / browser language
+  let initial = localStorage.getItem("language");
+  if (!initial) {
+    if (navigator.language.includes("fr")) initial = "fr";
+  } else {
+    initial = "en";
+  }
+
+  const [language, setLanguage] = useState(initial || "en");
 
   const changeLanguage = () => {
     if (language === "en") {
@@ -31,3 +39,11 @@ export function LanguageProvider({ children }) {
     </LanguageContext.Provider>
   );
 }
+
+LanguageProvider.propTypes = {
+  children: PropTypes.node,
+};
+
+LanguageProvider.defaultProps = {
+  children: <div />,
+};

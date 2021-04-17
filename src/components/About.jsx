@@ -14,6 +14,7 @@ function About() {
   const ref = useRef();
   const { windowSize } = useWindowSize();
 
+  // Avoid shift on border canvas caused by FOUT.
   document.fonts.ready.then(() => setFont(true));
 
   return (

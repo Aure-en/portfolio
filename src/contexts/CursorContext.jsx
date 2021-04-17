@@ -1,7 +1,7 @@
 import React, { useContext, createContext, useState } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { useTheme } from "../contexts/ThemeContext";
+import { useTheme } from "./ThemeContext";
 import Cursor from "../components/Cursor";
 
 // Icon

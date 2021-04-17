@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { useCursor } from "../../contexts/CursorContext";
 import { useSection } from "../../contexts/SectionContext";
@@ -6,8 +6,12 @@ import Dropdown from "./switch/Dropdown";
 import Line from "./Line";
 
 function Header() {
+  const [font, setFont] = useState(false);
   const { setState } = useCursor();
   const { section, name, sections } = useSection();
+
+  // Avoid shift on border canvas caused by FOUT.
+  document.fonts.ready.then(() => setFont(true));
 
   // To create the decorative line under the elements.
   const aboutRef = useRef();
@@ -48,15 +52,17 @@ function Header() {
       <Buttons>
         <Dropdown />
       </Buttons>
-      <Line
-        current={
-          section === 0
-            ? aboutRef
-            : section === sections.length - 1
-            ? contactRef
-            : projectsRef
-        }
-      />
+      {font && (
+        <Line
+          current={
+            section === 0
+              ? aboutRef
+              : section === sections.length - 1
+              ? contactRef
+              : projectsRef
+          }
+        />
+      )}
     </Wrapper>
   );
 }

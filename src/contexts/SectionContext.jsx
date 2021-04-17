@@ -86,7 +86,7 @@ export function SectionProvider({ sections, children }) {
   // Sets up events listener
   useEffect(() => {
     window.addEventListener("scroll", onScroll);
-    if (windowSize.width < 992) {
+    if (windowSize.width < 992 && windowSize.height > 850) {
       document.body.style.overflow = "auto";
     } else {
       document.body.style.overflow = "hidden";

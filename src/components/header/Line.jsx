@@ -3,7 +3,13 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 function Line({ current }) {
-  return <>{current && current.current && <Container current={current} />}</>;
+  return (
+    <>
+      {current && current.current && (
+        <Container current={current} aria-hidden="true" />
+      )}
+    </>
+  );
 }
 
 export default Line;
@@ -11,6 +17,7 @@ export default Line;
 const Container = styled.span`
   display: inline-block;
   position: absolute;
+  pointer-events: none;
   top: 50%;
   height: 1px;
   background: ${(props) => props.theme.header_accent};
@@ -20,3 +27,13 @@ const Container = styled.span`
     props.current.current.getBoundingClientRect().right -
     props.current.current.getBoundingClientRect().left}px;
 `;
+
+Line.propTypes = {
+  current: PropTypes.shape({
+    current: PropTypes.instanceOf(Element),
+  }),
+};
+
+Line.defaultProps = {
+  current: { current: undefined },
+};
