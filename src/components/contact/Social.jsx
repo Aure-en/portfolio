@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useLanguage } from "../../contexts/LanguageContext";
+import { useCursor } from "../../contexts/CursorContext";
 import contact from "../../content/contact.json";
 
 // Icons
@@ -9,6 +10,7 @@ import { ReactComponent as IconMail } from "../../assets/icons/mail.svg";
 
 function Social() {
   const { language } = useLanguage();
+  const { setState } = useCursor();
 
   return (
     <Container>
@@ -16,12 +18,18 @@ function Social() {
       <List>
         <li>
           <a href={`mailto:${contact.links.mail}`} title="Send a mail">
-            <IconMail />
+            <IconMail
+              onMouseEnter={() => setState("hidden")}
+              onMouseLeave={() => setState("basic")}
+            />
           </a>
         </li>
         <li>
           <a href={contact.links.github} title="Github Profile">
-            <IconGithub />
+            <IconGithub
+              onMouseEnter={() => setState("hidden")}
+              onMouseLeave={() => setState("basic")}
+            />
           </a>
         </li>
       </List>
