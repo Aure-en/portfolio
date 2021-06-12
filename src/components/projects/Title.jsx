@@ -57,6 +57,7 @@ const Container = styled.h2`
 const Box = styled.span`
   display: inline-block;
   overflow: hidden;
+  white-space: pre-wrap;
 `;
 
 const Letter = styled.span`

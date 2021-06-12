@@ -11,6 +11,7 @@
     
       "fr": [
         "Room est un site de e-commerce proposant des meubles et décorations. Ce site fournit une expérience commerciale complète, puisque l'utilisateur peut examiner les produits, les acheter ou les sauvegarder dans une liste de favoris. Les clients peuvent facilement trouver le produit qu'ils recherchent en filtrant les meubles par couleur, dimension ou matériau.",
+
         "En cas de manque d'inspiration, les utilisateurs pourront tout de même trouver leur bonheur en parcourant des pièces prédécorées."
       ]
     },
@@ -34,6 +35,41 @@
 
   {
     "id": 2,
+    "title": "Lettuce Eat",
+    "description": {
+      "en": [
+        "Lettuce Eat is a Recipe Blog allowing an user to share their recipes. Readers may browse the recipes by categories, or filter them depending on their meal types and ingredients.",
+
+        "For this project, I set up a backend API and two different front-ends to access it: one for writing, editing and publishing the blog posts, and one for reading and commenting on the posts."
+      ],
+
+      "fr": [
+        "Lettuce Eat est un blog permettant à un utilisateur de partager ses recettes favorites. Les lecteurs peuvent parcourir les recettes par catégories ou les filtrer selon le type de repas ou les ingrédients qu'elles contiennent.",
+
+        "Ce projet regroupe un API utilisé par deux front-ends. L'une des deux parties front-end permet au blogger de rédiger, éditer et publier ses recettes, et l'autre permet aux lecteurs de lire les publications et d'écrire des commentaires."
+      ]
+    },
+    "technologies": [
+      "MongoDB",
+      "Express",
+      "React",
+      "Node JS",
+      "Styled Components",
+      "Responsive"
+    ],
+    "repository": "https://github.com/Aure-en/lettuce_eat",
+    "view": "https://aure-en.github.io/lettuce_eat/",
+    "visuals": [
+      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Flettuce_eat%2Fmobile_lettuce1.png?alt=media&token=e2ca0f16-f331-4061-962d-80d5c613ecb4",
+      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Flettuce_eat%2Fmobile_lettuce2.png?alt=media&token=7d293a68-df48-408b-85ca-b6ec7b8dbf89",
+      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Flettuce_eat%2Fmobile_lettuce3.png?alt=media&token=608e3ba3-0a81-4a84-bbe8-416e422148ef"
+    ],
+    "mobile": "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Flettuce_eat%2Fmobile_small.png?alt=media&token=0f2b0a2b-ec1f-4d75-ae74-55a3c55d9cb8",
+    "hasDarkMode": false
+  },
+
+  {
+    "id": 3,
     "title": "Breadit",
     "description": {
       "en": [
