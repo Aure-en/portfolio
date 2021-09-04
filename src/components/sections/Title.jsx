@@ -34,7 +34,6 @@ Title.defaultProps = {
 };
 
 const Container = styled.h2`
-  position: relative;
   font-family: "Playfair Display", "Source Sans Pro", "Open Sans",
     "Trebuchet MS", "Verdana", sans-serif;
   font-size: 3rem;

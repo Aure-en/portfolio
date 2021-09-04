@@ -24,17 +24,17 @@ Line.defaultProps = {
 };
 
 const Container = styled.span`
+  position: absolute;
   display: flex;
   align-items: center;
   font-family: "Playfair Display", "Source Sans Pro", "Open Sans",
     "Trebuchet MS", "Verdana", sans-serif;
   font-size: 1.125rem;
-  position: absolute;
   bottom: 0;
-  right: -3rem;
+  left: 100%;
 
   @media all and (min-width: 576px) {
-    right: -5rem;
+    left: 125%;
   }
 
   &:before {

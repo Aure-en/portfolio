@@ -5,7 +5,7 @@ import ImageScroll from "./ImageScroll";
 import Buttons from "./controls/Buttons";
 import ThemeSwitch from "./controls/ThemeSwitch";
 
-function Preview({ visuals, hasDarkMode }) {
+function Preview({ visuals, hasDarkMode, hasScroll }) {
   const [imageNumber, setImageNumber] = useState(0);
   const [theme, setTheme] = useState("light");
 
@@ -23,6 +23,7 @@ function Preview({ visuals, hasDarkMode }) {
         <ImageScroll
           number={imageNumber}
           src={hasDarkMode ? visuals[theme][imageNumber] : visuals[imageNumber]}
+          hasScroll={hasScroll}
         />
       </div>
 

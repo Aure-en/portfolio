@@ -26,9 +26,9 @@ function About() {
             <p key={paragraph}>{paragraph}</p>
           ))}
         </div>
-        <Interest>{content[language].interests.introduction}</Interest>
+        <Focus>{content[language].focus.introduction}</Focus>
         <ul>
-          {content[language].interests.list.map((interest) => (
+          {content[language].focus.list.map((interest) => (
             <li key={interest}>{interest}</li>
           ))}
         </ul>
@@ -81,10 +81,10 @@ const Title = styled.h1`
     "Trebuchet MS", "Verdana", sans-serif;
   font-weight: 300;
   font-size: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 `;
 
-const Interest = styled.div`
+const Focus = styled.div`
   font-family: "Playfair Display", "Source Sans Pro", "Open Sans",
     "Trebuchet MS", "Verdana", sans-serif;
   font-weight: 300;

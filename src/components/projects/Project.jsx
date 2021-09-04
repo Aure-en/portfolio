@@ -21,6 +21,7 @@ function Project({ project }) {
           <Preview
             visuals={project.visuals}
             hasDarkMode={project.hasDarkMode}
+            hasScroll={project.hasScroll}
           />
         )}
 
@@ -180,6 +181,7 @@ Project.propTypes = {
     ]),
     mobile: PropTypes.string.isRequired,
     hasDarkMode: PropTypes.bool.isRequired,
+    hasScroll: PropTypes.bool.isRequired,
   }).isRequired,
 };
 

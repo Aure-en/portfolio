@@ -99,8 +99,6 @@ const Container = styled.nav`
 `;
 
 const Link = styled.a`
-  position: relative;
-
   &:hover {
     color: ${(props) => props.theme.text_secondary};
   }

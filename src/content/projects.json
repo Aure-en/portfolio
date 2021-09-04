@@ -1,6 +1,76 @@
 [
   {
     "id": 1,
+    "title": "Lechat",
+    "description": {
+      "en": [
+        "Ever wanted to chat with new people, or send funny pictures to your friends? Lechat is a chat website that allows you send prettily formatted messages and files in public servers or private conversations.",
+        "Built with Node.js, Express, React and MongoDB, it allows you to create or join rooms where you can share thoughts and interests with users around the world."
+      ],
+      "fr": [
+       "Souhaitez-vous discuter avec de nouvelles personnes, ou simplement envoyer des images drôles à vos amis ? Lechat est une application de chat qui permet à ses utilisateurs d’envoyer des messages pouvant être formattés et des fichiers à la fois dans des serveurs publics et des conversations privées.",
+       "Construite avec Node.js, Express, React et MongoDB, Lechat vous permet de créer ou de rejoindre des salles où vous pourrez partager vos pensées et centres d’intérêt avec d’autres personnes réparties aux quatre coins du monde."
+      ]
+    },
+    "technologies": [
+      "MongoDB",
+      "Express",
+      "React",
+      "Node.js",
+      "Socket.io",
+      "Styled Components",
+      "Responsive"
+    ],
+    "repository": "https://github.com/Aure-en/lechat",
+    "view": "https://lechat.vercel.app/",
+    "visuals": [
+      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Flechat%2F1.png?alt=media&token=70944dc1-8e4c-46e1-bb6d-da40cf70dce8",
+      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Flechat%2F2.png?alt=media&token=3164e722-f852-46ca-8809-358191a4fa18",
+      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Flechat%2F3.png?alt=media&token=e2f3783f-f6d7-43aa-aea6-e28080db3bb1"
+    ],
+    "mobile": "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Flechat%2Fmobile.png?alt=media&token=dd19f16b-a51f-4d20-9652-5aeadd629b15",
+    "hasDarkMode": false,
+    "hasScroll": false
+  },
+
+  {
+    "id": 2,
+    "title": "Berrycious",
+    "description": {
+      "en": [
+        "Berrycious is a Recipe Blog allowing an user to share their recipes. Readers may browse the recipes by categories, or filter them depending on their meal types and ingredients.",
+
+        "For this project, I set up a backend API and two different front-ends to access it: one for writing, editing and publishing the blog posts, and one for reading and commenting on the posts."
+      ],
+
+      "fr": [
+        "Berrycious est un blog permettant à un utilisateur de partager ses recettes favorites. Les lecteurs peuvent parcourir les recettes par catégories ou les filtrer selon le type de repas ou les ingrédients qu'elles contiennent.",
+
+        "Ce projet regroupe une API utilisé par deux front-ends. L'une des deux parties front-end permet au blogger de rédiger, éditer et publier ses recettes, et l'autre permet aux lecteurs de lire les publications et d'écrire des commentaires."
+      ]
+    },
+    "technologies": [
+      "MongoDB",
+      "Express",
+      "React",
+      "Node.js",
+      "Styled Components",
+      "Responsive"
+    ],
+    "repository": "https://github.com/Aure-en/berrycious",
+    "view": "https://berrycious.vercel.app/",
+    "visuals": [
+      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fberrycious%2Fberrycious1.png?alt=media&token=16834d7a-cd7f-4e51-8876-3d4e8e02bed8",
+      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fberrycious%2Fberrycious2.png?alt=media&token=249ed11e-30f1-465a-931e-5b2b653d2b2c",
+      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fberrycious%2Fberrycious3.png?alt=media&token=e80c0685-3e84-4c81-8351-d1437fdbc353"
+    ],
+    "mobile": "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fberrycious_mobile.png?alt=media&token=25d2917b-f11d-4db7-b3ea-3aaea2e87e2f",
+    "hasDarkMode": false,
+    "hasScroll": true
+  },
+
+  {
+    "id": 3,
     "title": "Room",
     "description": {
       "en": [
@@ -30,46 +100,12 @@
       "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Froom%2Froom3.png?alt=media&token=68b9047c-2923-4752-b769-2a241ba7fd91"
     ],
     "mobile": "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Froom%2Froom-mobile.png?alt=media&token=ee3699e6-22a0-4533-b8ea-2f3a4922c72a",
-    "hasDarkMode": false
+    "hasDarkMode": false,
+    "hasScroll": true
   },
 
   {
-    "id": 2,
-    "title": "Lettuce Eat",
-    "description": {
-      "en": [
-        "Lettuce Eat is a Recipe Blog allowing an user to share their recipes. Readers may browse the recipes by categories, or filter them depending on their meal types and ingredients.",
-
-        "For this project, I set up a backend API and two different front-ends to access it: one for writing, editing and publishing the blog posts, and one for reading and commenting on the posts."
-      ],
-
-      "fr": [
-        "Lettuce Eat est un blog permettant à un utilisateur de partager ses recettes favorites. Les lecteurs peuvent parcourir les recettes par catégories ou les filtrer selon le type de repas ou les ingrédients qu'elles contiennent.",
-
-        "Ce projet regroupe un API utilisé par deux front-ends. L'une des deux parties front-end permet au blogger de rédiger, éditer et publier ses recettes, et l'autre permet aux lecteurs de lire les publications et d'écrire des commentaires."
-      ]
-    },
-    "technologies": [
-      "MongoDB",
-      "Express",
-      "React",
-      "Node JS",
-      "Styled Components",
-      "Responsive"
-    ],
-    "repository": "https://github.com/Aure-en/lettuce_eat",
-    "view": "https://aure-en.github.io/lettuce_eat/",
-    "visuals": [
-      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Flettuce_eat%2Fmobile_lettuce1.png?alt=media&token=e2ca0f16-f331-4061-962d-80d5c613ecb4",
-      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Flettuce_eat%2Fmobile_lettuce2.png?alt=media&token=7d293a68-df48-408b-85ca-b6ec7b8dbf89",
-      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Flettuce_eat%2Fmobile_lettuce3.png?alt=media&token=608e3ba3-0a81-4a84-bbe8-416e422148ef"
-    ],
-    "mobile": "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Flettuce_eat%2Fmobile_small.png?alt=media&token=0f2b0a2b-ec1f-4d75-ae74-55a3c55d9cb8",
-    "hasDarkMode": false
-  },
-
-  {
-    "id": 3,
+    "id": 4,
     "title": "Breadit",
     "description": {
       "en": [
@@ -103,6 +139,7 @@
       ]
     },
     "mobile": "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fbreadit_mobile.png?alt=media&token=a8c2916b-3da4-424e-b4bb-d1f366e4947f",
-    "hasDarkMode": true
+    "hasDarkMode": true,
+    "hasScroll": true
   }
 ]

@@ -7,6 +7,7 @@ import contact from "../../content/contact.json";
 // Icons
 import { ReactComponent as IconGithub } from "../../assets/icons/github.svg";
 import { ReactComponent as IconMail } from "../../assets/icons/mail.svg";
+import { ReactComponent as IconLinkedIn } from "../../assets/icons/linkedin.svg";
 
 function Social() {
   const { language } = useLanguage();
@@ -25,8 +26,16 @@ function Social() {
           </a>
         </li>
         <li>
-          <a href={contact.links.github} title="Github Profile">
+          <a href={contact.links.github} title="Github">
             <IconGithub
+              onMouseEnter={() => setState("hidden")}
+              onMouseLeave={() => setState("basic")}
+            />
+          </a>
+        </li>
+        <li>
+          <a href={contact.links.linkedIn} title="LinkedIn">
+            <IconLinkedIn
               onMouseEnter={() => setState("hidden")}
               onMouseLeave={() => setState("basic")}
             />

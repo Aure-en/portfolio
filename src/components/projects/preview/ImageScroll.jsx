@@ -5,7 +5,7 @@ import { useCursor } from "../../../contexts/CursorContext";
 import ProgressBar from "./ProgressBar";
 import Border from "../../canvas/Border";
 
-function ImageScroll({ number, src }) {
+function ImageScroll({ number, src, hasScroll }) {
   const { setState } = useCursor();
   const imageRef = useRef();
   const containerRef = useRef();
@@ -16,9 +16,7 @@ function ImageScroll({ number, src }) {
   // When we switch preview images, scroll back to top.
   useEffect(() => {
     setScrollY(0);
-    containerRef.current.style.scrollBehavior = "smooth";
     containerRef.current.scrollTop = 0;
-    containerRef.current.style.scrollBehavior = "auto";
   }, [number]);
 
   const onMouseUp = (e) => {
@@ -44,15 +42,16 @@ function ImageScroll({ number, src }) {
 
   return (
     <>
-      <ProgressBar
-        isActive={isScrolling}
-        container={containerRef}
-        content={imageRef}
-        src={src}
-        number={number}
-      >
-        (Drag and scroll)
-      </ProgressBar>
+      {hasScroll && (
+        <ProgressBar
+          isActive={isScrolling}
+          container={containerRef}
+          content={imageRef}
+          src={src}
+          number={number}
+        />
+      )}
+
       <Border element={containerRef} radius={150} />
       <Container
         ref={containerRef}
@@ -66,6 +65,7 @@ function ImageScroll({ number, src }) {
           onDragStart={(e) => {
             e.preventDefault();
           }}
+          $hasScroll={hasScroll}
           onMouseEnter={() => setState("preview")}
           onMouseLeave={() => setState("basic")}
         />
@@ -90,5 +90,6 @@ const Container = styled.div`
 
 const Image = styled.img`
   max-width: 100%;
+  ${(props) => !props.$hasScroll && "height: 100%;"}
   vertical-align: bottom; // Prevents bottom white-space.
 `;
