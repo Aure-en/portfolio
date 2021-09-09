@@ -14,7 +14,7 @@ function Title({ transition, title, link }) {
     >
       <a href={link}>
         {title.split("").map((letter, index) => (
-          <Box key={index}>
+          <Box key={`${title}-${index}`}>
             <Transition in={transition} timeout={0}>
               {(state) => <Letter $state={state}>{letter}</Letter>}
             </Transition>
