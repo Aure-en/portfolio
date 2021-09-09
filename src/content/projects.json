@@ -22,13 +22,20 @@
     ],
     "repository": "https://github.com/Aure-en/lechat",
     "view": "https://lechat.vercel.app/",
-    "visuals": [
-      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Flechat%2F1.png?alt=media&token=70944dc1-8e4c-46e1-bb6d-da40cf70dce8",
-      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Flechat%2F2.png?alt=media&token=3164e722-f852-46ca-8809-358191a4fa18",
-      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Flechat%2F3.png?alt=media&token=e2f3783f-f6d7-43aa-aea6-e28080db3bb1"
-    ],
-    "mobile": "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Flechat%2Fmobile.png?alt=media&token=dd19f16b-a51f-4d20-9652-5aeadd629b15",
-    "hasDarkMode": false,
+    "visuals": {
+      "light" : [
+        "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Flechat%2F1L.webp?alt=media&token=fee3d7fb-8fdb-4ba3-ab0d-0e05ea9b8a3b",
+        "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Flechat%2F2L.webp?alt=media&token=482a508c-26a1-408f-b780-744d85608925",
+        "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Flechat%2F3L.webp?alt=media&token=7bee8c3c-d2bd-4560-8e24-964ef0161cff"
+      ],
+      "dark": [
+        "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Flechat%2F1D.png?alt=media&token=62f5868b-a6ee-4410-928e-ec22b9c35659",
+        "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Flechat%2F2D.webp?alt=media&token=307bcb37-9488-4247-baf7-c03af5a497d7",
+        "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Flechat%2F3D.png?alt=media&token=ad98b98a-a5af-42fd-b159-e3458cb187d7"
+      ]
+    },
+    "mobile": "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Flechat%2Fmobile.webp?alt=media&token=a384dcb9-95ab-4414-b263-832733849160",
+    "hasDarkMode": true,
     "hasScroll": false
   },
 
@@ -59,11 +66,11 @@
     "repository": "https://github.com/Aure-en/berrycious",
     "view": "https://berrycious.vercel.app/",
     "visuals": [
-      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fberrycious%2Fberrycious1.png?alt=media&token=16834d7a-cd7f-4e51-8876-3d4e8e02bed8",
-      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fberrycious%2Fberrycious2.png?alt=media&token=249ed11e-30f1-465a-931e-5b2b653d2b2c",
-      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fberrycious%2Fberrycious3.png?alt=media&token=e80c0685-3e84-4c81-8351-d1437fdbc353"
+      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fberrycious%2Fberrycious1.webp?alt=media&token=1a934ea6-fc7d-462c-b0f8-ab5103f18774",
+      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fberrycious%2Fberrycious2.webp?alt=media&token=249a3abe-a602-4196-b5d3-b8a5d724609c",
+      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fberrycious%2Fberrycious3.webp?alt=media&token=082fc5bc-89fe-4094-9f53-9ec7bea7b9e8"
     ],
-    "mobile": "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fberrycious_mobile.png?alt=media&token=25d2917b-f11d-4db7-b3ea-3aaea2e87e2f",
+    "mobile": "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fberrycious%2Fberrycious_mobile.webp?alt=media&token=e8372d0f-d4c5-46b7-b2d7-fdb4721bbad4",
     "hasDarkMode": false,
     "hasScroll": true
   },
@@ -93,11 +100,11 @@
     "repository": "https://github.com/Aure-en/room",
     "view": "https://room-f191c.web.app/",
     "visuals": [
-      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Froom%2Froom1.png?alt=media&token=d44ade1d-70d0-4346-9b77-7f50680ecf1c",
-      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Froom%2Froom2.png?alt=media&token=6792bc39-36f9-4ba1-aa5b-506eafc9ed6f",
-      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Froom%2Froom3.png?alt=media&token=68b9047c-2923-4752-b769-2a241ba7fd91"
+      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Froom%2Froom1.webp?alt=media&token=b67e07fd-59e7-4704-89ab-3b5e99f8dc36",
+      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Froom%2Froom2.webp?alt=media&token=7601967f-458a-40e3-9b68-d5301d6bebbe",
+      "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Froom%2Froom3.webp?alt=media&token=6d12e643-0d97-40fd-8dcd-745805be157b"
     ],
-    "mobile": "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Froom%2Froom-mobile.png?alt=media&token=ee3699e6-22a0-4533-b8ea-2f3a4922c72a",
+    "mobile": "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Froom%2Froom-mobile.webp?alt=media&token=2dec33fd-5c5a-465b-978e-93a9d1fd3682",
     "hasDarkMode": false,
     "hasScroll": true
   },
@@ -125,17 +132,17 @@
     "view": "https://breadit.web.app/",
     "visuals": {
       "light": [
-        "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fbreadit1L.png?alt=media&token=cfda9918-99b1-42bf-91f9-f3769760cc31",
-        "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fbreadit2L.png?alt=media&token=b27ccfac-9037-400d-b758-e7bbe004bc25",
-        "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fbreadit3L.png?alt=media&token=9782e622-574b-43fd-8d1f-e7f680aee884"
+        "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fbreadit1L.webp?alt=media&token=b3c31409-0a8b-41da-8a5b-f6de74912a7b",
+        "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fbreadit2L.webp?alt=media&token=f7fb26e9-e5f9-4ddc-83f3-8de4d4abbf7d",
+        "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fbreadit3L.webp?alt=media&token=3317ad2a-3a76-4395-afe6-ca9a6078fb23"
       ],
       "dark": [
-        "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fbreadit1D.png?alt=media&token=1a7c4e8e-0912-4b96-bb7e-b39184bfaf9d",
-        "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fbreadit2D.png?alt=media&token=e0e58330-d3fb-44b8-91ba-c3e8b6827ede",
-        "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fbreadit3D.png?alt=media&token=8fc18f90-53be-4408-aaa4-7d3077933b22"
+        "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fbreadit1D.webp?alt=media&token=152f3c7a-f22c-4128-a9da-10d66c7395dd",
+        "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fbreadit2D.webp?alt=media&token=c7c702f2-321d-4596-9967-4d36f3d5d682",
+        "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fbreadit3D.webp?alt=media&token=a578422a-4dd0-4d36-bcb5-378743508eaf"
       ]
     },
-    "mobile": "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fbreadit_mobile.png?alt=media&token=a8c2916b-3da4-424e-b4bb-d1f366e4947f",
+    "mobile": "https://firebasestorage.googleapis.com/v0/b/aurelie-nguyen.appspot.com/o/projects%2Fbreadit%2Fbreadit_mobile.webp?alt=media&token=fe1895ba-e7ce-4bd6-ab69-f8901e2727b4",
     "hasDarkMode": true,
     "hasScroll": true
   }

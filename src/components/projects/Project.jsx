@@ -1,13 +1,14 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { useSection } from "../../contexts/SectionContext";
 import useWindowSize from "../../hooks/useWindowSize";
-import Preview from "./preview/Preview";
 import Title from "./Title";
 import Line from "../sections/Line";
 import Link from "../shared/links/Link";
+
+const Preview = lazy(() => import("./preview/Preview"));
 
 function Project({ project }) {
   const { language } = useLanguage();
@@ -18,11 +19,13 @@ function Project({ project }) {
     <Wrapper id={`project-${project.id}`}>
       <Container>
         {windowSize.width > 768 && (
-          <Preview
-            visuals={project.visuals}
-            hasDarkMode={project.hasDarkMode}
-            hasScroll={project.hasScroll}
-          />
+          <Suspense fallback={<Fallback />}>
+            <Preview
+              visuals={project.visuals}
+              hasDarkMode={project.hasDarkMode}
+              hasScroll={project.hasScroll}
+            />
+          </Suspense>
         )}
 
         <Header>
@@ -77,6 +80,30 @@ function Project({ project }) {
     </Wrapper>
   );
 }
+
+Project.propTypes = {
+  project: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    description: PropTypes.shape({
+      en: PropTypes.arrayOf(PropTypes.string),
+      fr: PropTypes.arrayOf(PropTypes.string),
+    }),
+    technologies: PropTypes.arrayOf(PropTypes.string),
+    repository: PropTypes.string,
+    view: PropTypes.string,
+    visuals: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.string),
+      PropTypes.shape({
+        light: PropTypes.arrayOf(PropTypes.string),
+        dark: PropTypes.arrayOf(PropTypes.string),
+      }),
+    ]),
+    mobile: PropTypes.string.isRequired,
+    hasDarkMode: PropTypes.bool.isRequired,
+    hasScroll: PropTypes.bool.isRequired,
+  }).isRequired,
+};
 
 const Wrapper = styled.div`
   display: flex;
@@ -161,28 +188,10 @@ const Image = styled.img`
   cursor: pointer;
 `;
 
-Project.propTypes = {
-  project: PropTypes.shape({
-    id: PropTypes.number,
-    title: PropTypes.string,
-    description: PropTypes.shape({
-      en: PropTypes.arrayOf(PropTypes.string),
-      fr: PropTypes.arrayOf(PropTypes.string),
-    }),
-    technologies: PropTypes.arrayOf(PropTypes.string),
-    repository: PropTypes.string,
-    view: PropTypes.string,
-    visuals: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.string),
-      PropTypes.shape({
-        light: PropTypes.arrayOf(PropTypes.string),
-        dark: PropTypes.arrayOf(PropTypes.string),
-      }),
-    ]),
-    mobile: PropTypes.string.isRequired,
-    hasDarkMode: PropTypes.bool.isRequired,
-    hasScroll: PropTypes.bool.isRequired,
-  }).isRequired,
-};
+const Fallback = styled.div`
+  height: 630px;
+  width: 25rem;
+  border: 1px solid ${(props) => props.theme.border};
+`;
 
 export default Project;

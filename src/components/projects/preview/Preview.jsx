@@ -67,10 +67,12 @@ Preview.propTypes = {
     }),
   ]).isRequired,
   hasDarkMode: PropTypes.bool,
+  hasScroll: PropTypes.bool,
 };
 
 Preview.defaultProps = {
   hasDarkMode: false,
+  hasScroll: false,
 };
 
 const Controls = styled.div`

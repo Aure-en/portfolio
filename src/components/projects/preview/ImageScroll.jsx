@@ -79,6 +79,11 @@ export default React.memo(ImageScroll);
 ImageScroll.propTypes = {
   number: PropTypes.number.isRequired,
   src: PropTypes.string.isRequired,
+  hasScroll: PropTypes.bool,
+};
+
+ImageScroll.defaultProps = {
+  hasScroll: false,
 };
 
 const Container = styled.div`
