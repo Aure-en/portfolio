@@ -16,7 +16,9 @@ function ImageScroll({ number, src, hasScroll }) {
   // When we switch preview images, scroll back to top.
   useEffect(() => {
     setScrollY(0);
+    containerRef.current.style.scrollBehavior = "smooth";
     containerRef.current.scrollTop = 0;
+    containerRef.current.style.scrollBehavior = "auto";
   }, [number]);
 
   const onMouseUp = (e) => {
@@ -51,7 +53,6 @@ function ImageScroll({ number, src, hasScroll }) {
           number={number}
         />
       )}
-
       <Border element={containerRef} radius={150} />
       <Container
         ref={containerRef}
@@ -65,16 +66,16 @@ function ImageScroll({ number, src, hasScroll }) {
           onDragStart={(e) => {
             e.preventDefault();
           }}
-          $hasScroll={hasScroll}
           onMouseEnter={() => setState("preview")}
           onMouseLeave={() => setState("basic")}
+          $hasScroll={hasScroll}
         />
       </Container>
     </>
   );
 }
 
-export default React.memo(ImageScroll);
+export default ImageScroll;
 
 ImageScroll.propTypes = {
   number: PropTypes.number.isRequired,
@@ -83,7 +84,7 @@ ImageScroll.propTypes = {
 };
 
 ImageScroll.defaultProps = {
-  hasScroll: false,
+  hasScroll: true,
 };
 
 const Container = styled.div`
@@ -95,6 +96,6 @@ const Container = styled.div`
 
 const Image = styled.img`
   max-width: 100%;
-  ${(props) => !props.$hasScroll && "height: 100%;"}
+  height: ${(props) => !props.$hasScroll && "100%"};
   vertical-align: bottom; // Prevents bottom white-space.
 `;

@@ -19,7 +19,7 @@ function Project({ project }) {
     <Wrapper id={`project-${project.id}`}>
       <Container>
         {windowSize.width > 768 && (
-          <Suspense fallback={<Fallback />}>
+          <Suspense fallback={<></>}>
             <Preview
               visuals={project.visuals}
               hasDarkMode={project.hasDarkMode}
@@ -186,12 +186,6 @@ const Image = styled.img`
   max-width: 100vw;
   border: 1px solid ${(props) => props.theme.border};
   cursor: pointer;
-`;
-
-const Fallback = styled.div`
-  height: 630px;
-  width: 25rem;
-  border: 1px solid ${(props) => props.theme.border};
 `;
 
 export default Project;
