@@ -3,7 +3,7 @@ const colors = {
 
   text_primary: "rgb(55, 55, 55)",
   text_secondary: "rgb(105, 105, 105)",
-  text_accent: "rgb(210, 162, 88)",
+  text_accent: "rgb(193, 127, 26)",
 
   header_bg: "rgb(255, 255, 255)",
   header_accent: "rgba(219, 178, 96, 0.5)",

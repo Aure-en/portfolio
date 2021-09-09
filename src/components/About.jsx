@@ -26,12 +26,21 @@ function About() {
             <p key={paragraph}>{paragraph}</p>
           ))}
         </div>
+
         <Focus>{content[language].focus.introduction}</Focus>
-        <ul>
+        <List>
           {content[language].focus.list.map((interest) => (
-            <li key={interest}>{interest}</li>
+            <Li key={interest}>{interest}</Li>
           ))}
-        </ul>
+        </List>
+
+        <Focus>{content[language].stack.introduction}</Focus>
+        <StackList>
+          {content[language].stack.list.map((tool) => (
+            <Li key={tool}>{tool}</Li>
+          ))}
+        </StackList>
+
         <View>
           {content[language].link} <IconDown />
         </View>
@@ -62,7 +71,7 @@ const Container = styled.main`
   display: flex;
   flex-direction: column;
   width: 100vw;
-  max-width: 50rem;
+  max-width: 55rem;
   padding: 1rem;
   z-index: 2;
   background: ${(props) => props.theme.background};
@@ -88,4 +97,33 @@ const Focus = styled.div`
   font-family: "Playfair Display", "Source Sans Pro", "Open Sans",
     "Trebuchet MS", "Verdana", sans-serif;
   font-weight: 300;
+`;
+
+const List = styled.ul`
+  list-style: none;
+`;
+
+const StackList = styled(List)`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  @media all and (min-width: 400px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+`;
+
+const Li = styled.li`
+  display: flex;
+  align-items: center;
+
+  &:before {
+    content: "";
+    display: inline-block;
+    height: 0.3rem;
+    width: 0.3rem;
+    background: ${(props) => props.theme.text_accent};
+    transform: rotate(45deg);
+    margin-right: 1rem;
+    opacity: 0.8;
+  }
 `;

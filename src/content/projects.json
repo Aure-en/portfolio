@@ -18,8 +18,7 @@
       "React",
       "Node.js",
       "Socket.io",
-      "Styled Components",
-      "Responsive"
+      "Styled Components"
     ],
     "repository": "https://github.com/Aure-en/lechat",
     "view": "https://lechat.vercel.app/",
@@ -55,7 +54,7 @@
       "React",
       "Node.js",
       "Styled Components",
-      "Responsive"
+      "TypeScript"
     ],
     "repository": "https://github.com/Aure-en/berrycious",
     "view": "https://berrycious.vercel.app/",
@@ -89,8 +88,7 @@
       "React",
       "React Router",
       "Styled Components",
-      "Firebase",
-      "Responsive"
+      "Firebase"
     ],
     "repository": "https://github.com/Aure-en/room",
     "view": "https://room-f191c.web.app/",
@@ -121,8 +119,7 @@
       "React",
       "React Router",
       "Styled Components",
-      "Firebase",
-      "Responsive"
+      "Firebase"
     ],
     "repository": "https://github.com/Aure-en/breadit",
     "view": "https://breadit.web.app/",

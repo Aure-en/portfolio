@@ -23,7 +23,13 @@
         "Node.js",
         "Express",
         "MongoDB",
-        "Firebase"
+        "Firebase",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Jest",
+        "Git",
+        "GitHub"
       ]
     },
     "link": "View Projects"
@@ -47,13 +53,19 @@
     },
 
     "stack": {
-      "introduction": "Les technologies et outils principaux avec lesquels je travaille sont...",
+      "introduction": "Les technologies et outils avec lesquels je travaille principalement sont...",
       "list": [
         "React",
         "Node.js",
         "Express",
         "MongoDB",
-        "Firebase"
+        "Firebase",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Jest",
+        "Git",
+        "GitHub"
       ]
     },
     "link": "Portfolio"
