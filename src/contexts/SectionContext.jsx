@@ -36,7 +36,7 @@ export function SectionProvider({ sections, children }) {
   };
 
   const move = (section) => {
-    document.querySelector(`#${sections[section]}`).scrollIntoView();
+    document.querySelector(`#${sections[section]}`)?.scrollIntoView();
   };
 
   let delaying = false; // Prevents the user from scrolling many times at once.
