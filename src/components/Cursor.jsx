@@ -68,54 +68,58 @@ const caret = `
 `;
 
 const Circle = styled.span`
-  position: absolute;
-  display: ${(props) => (props.state === "hidden" ? "none" : "inline-block")};
-  width: ${(props) => {
-    switch (props.state) {
-      case "hidden":
-        return "0";
-      case "preview":
-        return "3rem";
-      case "scroll":
-        return "2.5rem";
-      case "basic":
-      default:
-        return "2rem";
-    }
-  }};
-  height: ${(props) => {
-    switch (props.state) {
-      case "hidden":
-        return "0";
-      case "preview":
-        return "3rem";
-      case "scroll":
-        return "2.5rem";
-      case "basic":
-      default:
-        return "2rem";
-    }
-  }};
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  border: 1px solid ${(props) => props.theme.cursor_circle};
-  pointer-events: none;
-  z-index: 999;
-  transition: height, width 0.1s ease-out;
+  display: none;
 
-  &:before {
-    ${caret};
-    ${(props) => props.state === "scroll" && 'content: ""'};
-    border-bottom: 4px solid ${(props) => props.theme.cursor_caret};
-    border-top: 4px solid transparent;
-    top: -35%;
-  }
+  @media all and (min-width: 768px) {
+    position: absolute;
+    display: ${(props) => (props.state === "hidden" ? "none" : "inline-block")};
+    width: ${(props) => {
+      switch (props.state) {
+        case "hidden":
+          return "0";
+        case "preview":
+          return "3rem";
+        case "scroll":
+          return "2.5rem";
+        case "basic":
+        default:
+          return "2rem";
+      }
+    }};
+    height: ${(props) => {
+      switch (props.state) {
+        case "hidden":
+          return "0";
+        case "preview":
+          return "3rem";
+        case "scroll":
+          return "2.5rem";
+        case "basic":
+        default:
+          return "2rem";
+      }
+    }};
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 1px solid ${(props) => props.theme.cursor_circle};
+    pointer-events: none;
+    z-index: 999;
+    transition: height, width 0.1s ease-out;
 
-  &:after {
-    ${caret}
-    ${(props) => props.state === "scroll" && 'content: ""'};
-    border-top: 4px solid ${(props) => props.theme.cursor_caret};
-    border-bottom: 4px solid transparent;
-    bottom: -35%;
+    &:before {
+      ${caret};
+      ${(props) => props.state === "scroll" && 'content: ""'};
+      border-bottom: 4px solid ${(props) => props.theme.cursor_caret};
+      border-top: 4px solid transparent;
+      top: -35%;
+    }
+
+    &:after {
+      ${caret}
+      ${(props) => props.state === "scroll" && 'content: ""'};
+      border-top: 4px solid ${(props) => props.theme.cursor_caret};
+      border-bottom: 4px solid transparent;
+      bottom: -35%;
+    }
   }
 `;
